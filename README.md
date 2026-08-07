@@ -77,12 +77,13 @@ phishing veri, corpora di messaggi già etichettati da altri.
 | | risultato |
 |---|---|
 | Falsi allarmi su **1.000.000** di siti reali | **0,032%** (di cui bloccati 0,006%) |
+| Quanto ci aggiunge la cronologia accesa, come gira sul tuo PC | **+0,003 punti** |
 | Phishing riconosciuto — **dove il catalogo conosce il marchio** | **78,3%** |
 | Phishing riconosciuto — dove non lo conosce | **1,8%** |
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Truffe riconosciute su un corpus di SMS inglesi | **4,4%** |
-| Tentativi di evasione scritti a mano che passano | **74,5%** su 51 |
-| Test automatici | **710** |
+| Tentativi di evasione scritti a mano che passano | **82%** su 51 |
+| Test automatici | **715** |
 
 **Le prime due righe vanno lette insieme, e sono il numero più importante di questa pagina.** La
 seconda dice quanto vale il meccanismo; la terza dice quanto è largo. Quello che decide la copertura
@@ -95,13 +96,33 @@ un prodotto costruito per l'Italia può sapere. Un motore a regole fuori dal suo
 **si azzera**, e a schermo è indistinguibile da «tutto a posto». Il 4,4% sui messaggi è lo stesso
 fenomeno: SMS britannici del 2011, truffe a numeri a tariffa maggiorata.
 
-Per questo il pezzo che conta davvero non è il catalogo ma la funzione che impara i marchi **dalla
-cronologia di chi usa il computer**: è l'unica lista giusta per chiunque, e permette di accorgersi
-dell'imitazione di una banca brasiliana senza averne mai sentito parlare.
+**La cronologia, misurata — e questa pagina aveva promesso troppo.** Qui c'era scritto che il pezzo
+che conta davvero non è il catalogo ma la funzione che impara i marchi *dalla cronologia di chi usa
+il computer*: l'unica lista giusta per chiunque, capace di riconoscere l'imitazione di una banca
+brasiliana senza averne mai sentito parlare. Era una frase senza un numero sotto. Adesso il numero
+c'è, e dice un'altra cosa: con 200 abitudini — una macchina vera ne impara fra 158 e 176 — recupera
+**3** casi di phishing sui 277 che sfuggivano.
 
-Il 74,5% di evasione è pubblicato apposta: sapere cosa manca vale più di un numero che sembra buono.
-E un numero che **non** troverete qui è «prende il 99% delle minacce». Sugli elenchi di soli domini
-la stessa misura dà 0,28% o 26,6% a seconda di quale schema si assume per un dato che l'elenco non
+E c'è di peggio, perché riguarda tutta questa tabella: **quella funzione non era mai entrata in una
+misura**, pur essendo accesa nel prodotto installato. Misurandola, moltiplicava per sette i falsi
+allarmi. Letti uno per uno, il motivo era che la regola sul «nome di un sito che usi, dentro un'altra
+registrazione» accusava `dc-msedge.net`, `cloudflare-ech.com`, `azure-apim.net`,
+`taboola-display.com`: i domini con cui Microsoft, Cloudflare e Amazon registrano la propria
+infrastruttura. Non è una firma di frode, è una convenzione aziendale — e la regola stava accusando
+Microsoft di imitare Microsoft.
+
+Ora quella somiglianza pesa meno della soglia d'allarme: resta una prova che si somma alle altre e
+non decide più da sola. I tre recuperi restano, e i falsi allarmi tornano quasi dov'erano — è la
+seconda riga della tabella, e la ragione per cui esiste. Sui 990.000 siti veri fuori dalla cronologia
+simulata: **294 falsi allarmi senza cronologia, 328 con**. Prima della correzione erano il settuplo.
+
+L'**82% di evasione** è pubblicato apposta, e questa volta è **salito**: era 74,5%. Tre dei tentativi
+scritti a mano venivano fermati proprio da quella regola che accusava da sola. Tre attacchi scritti
+da noi contro quarantasei siti veri che la gente apre ogni giorno — il baratto non è in dubbio, ma è
+una perdita, e sapere cosa manca vale più di un numero che sembra buono.
+
+Un numero che **non** troverete qui è «prende il 99% delle minacce». Sugli elenchi di soli domini la
+stessa misura dà 0,28% o 26,6% a seconda di quale schema si assume per un dato che l'elenco non
 contiene — quindi non significa niente, e non lo pubblichiamo.
 
 **Il tetto, misurato.** Dei casi non riconosciuti, il 42% non accende **nessun** segnale: nessuna
@@ -129,12 +150,12 @@ ventiduemila siti veri — misurato, ed è il motivo per cui la soglia non si to
 ## Verifica del file
 
 ```
-AIDefender-0.1.5248-x64.msi
-SHA-256  09E8D11D1B287456ED71DE20AA4B66E6C0868396B7556F781BE94DBBA39F0EB8
+AIDefender-0.1.5251-x64.msi
+SHA-256  971F050A0103EA4228B1ABDCD12E96D43397773DF6B12A341B5437298E5C3558
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5248-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5251-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
