@@ -15,12 +15,22 @@ Qui c'è **solo il programma installabile**. Il codice sorgente non è pubblicat
 Tutte le funzioni sono **accese**, sia quelle del piano gratuito sia quelle del piano a pagamento.
 Nessuna schermata chiede di aggiornare il piano.
 
-Restano spente due cose, e la ragione è dichiarata perché non è un difetto:
+Resta spenta una cosa sola, e la ragione è dichiarata perché non è un difetto:
 
 | Funzione | Perché è spenta |
 |---|---|
 | Analisi approfondita con IA | La chiave del fornitore non sta sul computer del cliente, mai: passa da un backend che qui non c'è. Una build di rilascio **rifiuta** la chiave locale, per costruzione. |
-| Aggiornamento automatico | Mancano una chiave di firma e un indirizzo di pubblicazione. Il servizio lo dichiara a ogni avvio: una macchina che non riceverà correzioni non deve scoprirlo dopo. |
+
+**L'aggiornamento automatico è acceso da questa versione.** Il servizio guarda una volta al giorno se
+ne esiste una più recente e la installa da solo, senza chiedere niente e senza chiedere un riavvio.
+Quello che scarica lo rifiuta se non porta la nostra firma: HTTPS dimostra chi ha servito il file,
+non chi lo ha scritto, quindi il manifesto è firmato con una chiave che non sta su nessun server e il
+prodotto porta solo la metà pubblica. Rifiuta anche una versione più vecchia della propria — un
+attacco di downgrade porterebbe la nostra stessa firma.
+
+E se non riesce a controllare, **lo dice**: dopo sette giorni di silenzio la riga nel cruscotto
+diventa ambra e scrive da quanti giorni. Prima restava a schermo la risposta dell'ultimo controllo
+riuscito, per sempre.
 
 ---
 
@@ -72,7 +82,7 @@ phishing veri, corpora di messaggi già etichettati da altri.
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Truffe riconosciute su un corpus di SMS inglesi | **4,4%** |
 | Tentativi di evasione scritti a mano che passano | **74,5%** su 51 |
-| Test automatici | **703** |
+| Test automatici | **710** |
 
 **Le prime due righe vanno lette insieme, e sono il numero più importante di questa pagina.** La
 seconda dice quanto vale il meccanismo; la terza dice quanto è largo. Quello che decide la copertura
@@ -119,13 +129,16 @@ ventiduemila siti veri — misurato, ed è il motivo per cui la soglia non si to
 ## Verifica del file
 
 ```
-AIDefender-0.1.5246-x64.msi
-SHA-256  C0CB0E76CFAF6AA166F008C32EC9C7505FDF9D3CBCD839668CEE10C90256D5A7
+AIDefender-0.1.5248-x64.msi
+SHA-256  09E8D11D1B287456ED71DE20AA4B66E6C0868396B7556F781BE94DBBA39F0EB8
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5246-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5248-x64.msi -Algorithm SHA256
 ```
+
+La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
+prima di installare qualunque cosa.
 
 ---
 
