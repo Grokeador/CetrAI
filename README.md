@@ -31,11 +31,11 @@ Restano spente due cose, e la ragione è dichiarata perché non è un difetto:
 1. Scarica l'MSI dalla sezione **Releases**.
 2. Windows mostrerà l'avviso di SmartScreen: **il pacchetto non è firmato**. Non c'è ancora un
    certificato EV. → *Ulteriori informazioni* → *Esegui comunque*.
-3. Durante l'installazione compare una schermata sul contributo anonimo al miglioramento del
-   prodotto, con la casella già spuntata. Puoi toglierla: quello che viaggia è una fascia di
-   punteggio e un elenco di sigle (`9|MSG_CREDENTIAL_REQUEST`) e il formato non è in grado di
-   contenere indirizzi, messaggi o nomi. In questo pacchetto non c'è comunque nessun indirizzo a cui
-   mandarli, quindi non parte niente.
+3. **Non ti viene chiesto niente sulla condivisione dei dati**, e non per distrazione: questo
+   pacchetto non ha un indirizzo a cui mandare, quindi la schermata del consenso non è nemmeno
+   compilata dentro. Una domanda a cui la risposta non cambia niente non è una domanda. Nei pacchetti
+   che ce l'hanno, quello che viaggia è una fascia di punteggio e un elenco di sigle
+   (`9|MSG_CREDENTIAL_REQUEST`): il formato non è in grado di contenere indirizzi, messaggi o nomi.
 4. Al termine il cruscotto si apre da solo e l'icona compare nell'area di notifica.
 
 Per disinstallare: *Impostazioni → App installate → AIDefender*. **Le copie di sicurezza dei tuoi
@@ -67,21 +67,37 @@ phishing veri, corpora di messaggi già etichettati da altri.
 | | risultato |
 |---|---|
 | Falsi allarmi su **1.000.000** di siti reali | **0,032%** (di cui bloccati 0,006%) |
-| Phishing riconosciuto, dove lo schema è vero | **7,7%** |
+| Phishing riconosciuto — **dove il catalogo conosce il marchio** | **78,3%** |
+| Phishing riconosciuto — dove non lo conosce | **1,8%** |
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Truffe riconosciute su un corpus di SMS inglesi | **4,4%** |
 | Tentativi di evasione scritti a mano che passano | **74,5%** su 51 |
-| Test automatici | **681** |
+| Test automatici | **703** |
 
-**Come vanno letti.** La precisione è alta e la copertura è bassa: il prodotto è costruito per non
-disturbare chi non ha problemi, non per intercettare tutto. Il 4,4% sui messaggi è misurato su SMS
-britannici del 2011 con truffe a numeri a tariffa maggiorata — fuori dal dominio per cui il motore è
-scritto, dove una regola non peggiora: **si azzera**. E il 74,5% di evasione è pubblicato apposta:
-sapere cosa manca vale più di un numero che sembra buono.
+**Le prime due righe vanno lette insieme, e sono il numero più importante di questa pagina.** La
+seconda dice quanto vale il meccanismo; la terza dice quanto è largo. Quello che decide la copertura
+di questo prodotto non è una soglia né un peso: è **quante organizzazioni ci sono nel catalogo**.
 
-Un numero che **non** troverete qui è «prende il 99% delle minacce». Sugli elenchi di soli domini la
-stessa misura dà 0,28% o 26,6% a seconda di quale schema si assume per un dato che l'elenco non
+La media delle due fa 7,7%, ed è la cifra che questa pagina pubblicava da sola. Era fuorviante in
+tutte e due le direzioni. Il corpus pubblico su cui è misurata contiene **zero** domini `.it` e
+**zero** marchi italiani su trecento — ventuno sono Roblox — quindi per il 92% sta fuori da ciò che
+un prodotto costruito per l'Italia può sapere. Un motore a regole fuori dal suo paese non peggiora:
+**si azzera**, e a schermo è indistinguibile da «tutto a posto». Il 4,4% sui messaggi è lo stesso
+fenomeno: SMS britannici del 2011, truffe a numeri a tariffa maggiorata.
+
+Per questo il pezzo che conta davvero non è il catalogo ma la funzione che impara i marchi **dalla
+cronologia di chi usa il computer**: è l'unica lista giusta per chiunque, e permette di accorgersi
+dell'imitazione di una banca brasiliana senza averne mai sentito parlare.
+
+Il 74,5% di evasione è pubblicato apposta: sapere cosa manca vale più di un numero che sembra buono.
+E un numero che **non** troverete qui è «prende il 99% delle minacce». Sugli elenchi di soli domini
+la stessa misura dà 0,28% o 26,6% a seconda di quale schema si assume per un dato che l'elenco non
 contiene — quindi non significa niente, e non lo pubblichiamo.
+
+**Il tetto, misurato.** Dei casi non riconosciuti, il 42% non accende **nessun** segnale: nessuna
+soglia li prenderà mai. Alcuni sono siti legittimi bucati, dove l'indirizzo è innocente perché lo è
+davvero. Abbassare la soglia da 25 a 20 guadagnerebbe otto casi di phishing e accuserebbe
+ventiduemila siti veri — misurato, ed è il motivo per cui la soglia non si tocca.
 
 ---
 
@@ -103,12 +119,12 @@ contiene — quindi non significa niente, e non lo pubblichiamo.
 ## Verifica del file
 
 ```
-AIDefender-0.1.5177-x64.msi
-SHA-256  707C86299AFFDB4F6EB49E14761A25D93FB3006A88EE61CC5EA2A13B10D9FDFB
+AIDefender-0.1.5246-x64.msi
+SHA-256  C0CB0E76CFAF6AA166F008C32EC9C7505FDF9D3CBCD839668CEE10C90256D5A7
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5177-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5246-x64.msi -Algorithm SHA256
 ```
 
 ---
