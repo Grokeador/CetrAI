@@ -8,6 +8,9 @@ delle Entrate, un dominio che sembra il tuo istituto e ha una lettera al posto g
 
 **AIDefender è il pezzo che manca.** Sta accanto a Windows Defender, non al suo posto.
 
+E non è un'app a cui *chiedere* se un messaggio è una truffa. È quella che **guarda al posto tuo**, e
+quando trova qualcosa la sistema invece di segnalartela.
+
 ---
 
 ## ⬇️ Scarica
@@ -132,18 +135,45 @@ il servizio supera i 24 MB all'avvio, e i test falliscono se un verdetto supera 
 
 ---
 
-## Cosa lo rende diverso
+## Non è l'ennesimo «incolla il messaggio e ti dico se è una truffa»
 
-**È verificabile.** Ogni numero di questa pagina si rifà con un comando su dati pubblici. Non c'è
-una cifra qui che non abbia dietro una misura eseguibile.
+Gli assistenti anti-truffa usciti negli ultimi anni fanno tutti la stessa cosa: apri l'app, incolli
+il messaggio, ricevi un parere. Funzionano — **quando ti ricordi di aprirli**, e su quello che avevi
+già deciso di controllare.
 
-**È misurato dove vive.** Il motore è tarato sull'Italia e le prove girano su corpora italiani ed
-esteri, separati, per non spacciare la media per la copertura.
+Ma la truffa che ti frega non è quella che hai messo in dubbio. È quella che hai creduto.
 
-**Non manda via i tuoi dati.** Le regole girano sul tuo computer. Quello che eventualmente esce è una
-fascia di punteggio e un elenco di sigle come `9|MSG_CREDENTIAL_REQUEST`: **il formato non è in grado
-di contenere indirizzi, messaggi o nomi.** Non è un dato reso anonimo, è un dato che non ha mai
-riguardato nessuno.
+| | L'assistente che ti dà un parere | AIDefender |
+|---|---|---|
+| **Devi ricordarti di usarlo** | sì: apri, incolli, aspetti | **no**: guarda da sé cronologia, file e indirizzi |
+| **Cosa ottieni** | un giudizio | **una cosa fatta** — il dominio bloccato, il processo fermato |
+| **Il messaggio** | esce dal tuo computer | le regole girano **qui**; esce al massimo una fascia di punteggio |
+| **Se qualcuno ti cifra i file** | non c'entra niente | copie automatiche e **ripristino a un clic** |
+| **Il catalogo dei marchi** | globale | **trenta settimane di CERT-AgID**, costruito per l'Italia |
+| **I falsi allarmi** | non pubblicati | **0,032% su un milione di siti veri**, e te lo rifai da solo |
+| **Cosa sa di te** | quello che gli mandi | le tue abitudini di navigazione, **e restano sul tuo disco** |
+
+Le ultime due righe sono quelle che contano davvero.
+
+**Un antitruffa che grida sul sito della tua banca ti ha già perso.** Da lì in poi la persona clicca
+«ignora» per riflesso, e il prodotto non protegge più niente. Per questo il numero pubblicato qui non
+è la percentuale di truffe riconosciute ma quella di **volte in cui ha sbagliato su un sito vero** —
+ed è misurato sul milione di siti più visitati al mondo, che non abbiamo scelto noi.
+
+**E impara la lista giusta per te, non per tutti.** Riconosce l'imitazione di una banca brasiliana
+senza averne mai sentito parlare, perché sa che *tu* la usi. Un catalogo globale non può contenere la
+banca di ciascuno; la tua navigazione sì, e non lascia il tuo computer per farlo.
+
+---
+
+## E in più, cose che un assistente anti-truffa non fa affatto
+
+**Ferma il ransomware e ti ridà i file.** Non è una funzione a parte: è la stessa idea. Trovato
+l'attacco, sceglie da sé l'ultima copia certamente intatta — quella **prima** dell'inizio — e la
+rimette. Non ti chiede quale.
+
+**È verificabile.** Ogni numero di questa pagina si rifà con un comando su dati pubblici. Non c'è una
+cifra qui che non abbia dietro una misura eseguibile.
 
 **Ti spiega perché.** Ogni verdetto arriva con i motivi in italiano, non con un punteggio e basta.
 
@@ -167,12 +197,12 @@ più bisogno è quella che crede di aver comprato un antivirus e quindi smette d
 ## Verifica del file
 
 ```
-AIDefender-0.1.5268-x64.msi
-SHA-256  7443F9CF78492309162EAF7DDFFA3AB27492A34F064B60E0354F3FF51CA11D79
+AIDefender-0.1.5270-x64.msi
+SHA-256  E99A709134BC69D18350DEF35FE3E84ED27727040137C36BE4D17B0274BEEB2C
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5268-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5270-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
