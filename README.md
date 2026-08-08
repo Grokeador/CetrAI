@@ -81,6 +81,27 @@ contravvenzione, giacenza, dogana*. Compaiono in **zero** domini legittimi su un
   volte e la pagavano due volte. Ora una regola corroborata da più macchine *diverse* vale per
   tutte — e sul filo passa solo una fascia di punteggio e un elenco di sigle
 
+### 📞 Ti avvisa quando la truffa arriva per telefono
+
+La frode che oggi costa di più in Italia non porta nessun virus: una telefonata, qualcuno che dice di
+essere la banca, e **sei tu a installare** il programma di controllo remoto. Software legittimo,
+firmato, che ogni antivirus lascia passare — giustamente, perché non è un virus. Non c'è niente da
+trovare per uno scanner di file.
+
+AIDefender guarda un'altra cosa: **quando quel programma è arrivato sul computer**. Chi lo usa per
+lavoro l'ha installato mesi fa. Chi sta per essere derubato l'ha installato durante la telefonata che
+è ancora in corso. Nei secondi prima che lo sconosciuto entri, ti dice l'unica frase che nessuno ti
+sta dicendo: *nessuna banca chiede di installare questi programmi.*
+
+### 💳 Sorveglia l'IBAN che hai copiato
+
+Esistono programmi che aspettano un IBAN negli appunti e lo sostituiscono un istante prima che tu lo
+incolli. Funziona perché **nessuno rilegge ventisette caratteri che ha appena copiato**, e perché
+quando il bonifico è partito non c'è niente da annullare.
+
+A tradirli non è il secondo IBAN — puoi legittimamente copiarne due — ma la velocità: un programma
+deve vincere la corsa contro l'incolla, e sostituisce in millisecondi. Quello lo vediamo.
+
 ### 🔒 Ferma il ransomware e ti ridà i file
 
 - **Rilevamento comportamentale**: guarda *come* si comportano i programmi con i tuoi file, non che
@@ -122,7 +143,7 @@ di phishing veri, corpora di messaggi già etichettati da altri.
 | Falsi allarmi su **1.000.000** di siti reali | **0,032%** — uno su tremila |
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Phishing riconosciuto dove il catalogo conosce il marchio | **78,3%** |
-| Test automatici che girano a ogni build | **721** |
+| Test automatici che girano a ogni build | **743** |
 | Tempo per verdetto | **0,041 ms** — 17.700 al secondo su un thread |
 | Memoria per verdetto | **4,7 KB** |
 | Memoria del servizio | **19 MB** |
@@ -197,12 +218,12 @@ più bisogno è quella che crede di aver comprato un antivirus e quindi smette d
 ## Verifica del file
 
 ```
-AIDefender-0.1.5270-x64.msi
-SHA-256  E99A709134BC69D18350DEF35FE3E84ED27727040137C36BE4D17B0274BEEB2C
+AIDefender-0.1.5276-x64.msi
+SHA-256  C18C903DFDF12C1F4C4CA64FC33F5722816C0F694DC6EB6367959667642F47F2
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5270-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5276-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
