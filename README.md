@@ -83,7 +83,7 @@ phishing veri, corpora di messaggi già etichettati da altri.
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Truffe riconosciute su un corpus di SMS inglesi | **4,4%** |
 | Tentativi di evasione scritti a mano che passano | **82%** su 51 |
-| Test automatici | **715** |
+| Test automatici | **720** |
 
 **Le prime due righe vanno lette insieme, e sono il numero più importante di questa pagina.** La
 seconda dice quanto vale il meccanismo; la terza dice quanto è largo. Quello che decide la copertura
@@ -121,6 +121,21 @@ scritti a mano venivano fermati proprio da quella regola che accusava da sola. T
 da noi contro quarantasei siti veri che la gente apre ogni giorno — il baratto non è in dubbio, ma è
 una perdita, e sapere cosa manca vale più di un numero che sembra buono.
 
+**Quando il prodotto si dichiara incerto, e perché era il numero sbagliato.** La banda in cui il
+prodotto ammette di non sapere cominciava esattamente dove comincia l'avviso: poteva dubitare solo di
+un caso su cui aveva già deciso di avvisare, e sui casi in cui taceva — dove stanno tutti i mancati —
+non aveva mai un dubbio. I due numeri uguali non erano una decisione, era un'omonimia. Da questa
+versione la banda comincia cinque punti più in basso, e non è una scelta di gusto: su un corpus di
+messaggi veri, le truffe che arrivano davanti al modello passano da **33 a 86**, e le conversazioni
+innocenti su cui si chiede passano da **0 a 4** su 4.827. Scendere ancora comprerebbe 46 truffe per
+48 conversazioni, e lì lo scambio smette di esserlo. **La soglia d'avviso non si è mossa**, quindi i
+falsi allarmi restano lo 0,032% della tabella: sono due numeri diversi, ed è il punto.
+
+Nella stessa misura è saltato fuori qualcosa che era in vendita e non avrebbe funzionato:
+l'estensione mostrava «Premium analizza in cloud i casi dubbi» su una pagina aperta nel browser,
+dove quell'analisi **non parte** — i contenuti da navigazione non escono dal PC, per scelta e con o
+senza Premium. Il riquadro è stato tolto, non reso più raro.
+
 Un numero che **non** troverete qui è «prende il 99% delle minacce». Sugli elenchi di soli domini la
 stessa misura dà 0,28% o 26,6% a seconda di quale schema si assume per un dato che l'elenco non
 contiene — quindi non significa niente, e non lo pubblichiamo.
@@ -150,12 +165,12 @@ ventiduemila siti veri — misurato, ed è il motivo per cui la soglia non si to
 ## Verifica del file
 
 ```
-AIDefender-0.1.5251-x64.msi
-SHA-256  971F050A0103EA4228B1ABDCD12E96D43397773DF6B12A341B5437298E5C3558
+AIDefender-0.1.5253-x64.msi
+SHA-256  016D70BB44D5D1422C5A16CAB220456EE2FA18D045D110C4D6FF820386783A28
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5251-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5253-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
