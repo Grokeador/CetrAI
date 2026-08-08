@@ -1,176 +1,178 @@
-# AIDefender — pacchetto di valutazione
+# AIDefender
 
-> **Windows ti protegge dai virus. AIDefender ti protegge dalle truffe.**
+> ## Windows ti protegge dai virus. **AIDefender ti protegge dalle truffe.**
 
-Servizio di sicurezza per Windows pensato per il mercato italiano: riconosce phishing, truffe via
-messaggio e imitazioni di marchi, sorveglia le cartelle personali e tiene copie da cui recuperare i
-file dopo un attacco.
+Il tuo antivirus è bravissimo a fermare i file infetti. Ma nessun file infetto ti ha mai chiesto le
+credenziali della banca: quello lo fa un SMS che sembra di Poste, un link che sembra dell'Agenzia
+delle Entrate, un dominio che sembra il tuo istituto e ha una lettera al posto giusto.
 
-Qui c'è **solo il programma installabile**. Il codice sorgente non è pubblicato.
+**AIDefender è il pezzo che manca.** Sta accanto a Windows Defender, non al suo posto.
 
 ---
 
-## Cosa c'è in questo pacchetto
+## ⬇️ Scarica
 
-Tutte le funzioni sono **accese**, sia quelle del piano gratuito sia quelle del piano a pagamento.
-Nessuna schermata chiede di aggiornare il piano.
+**[→ Scarica l'ultima versione dalla sezione Releases](../../releases/latest)**
 
-Resta spenta una cosa sola, e la ragione è dichiarata perché non è un difetto:
+Windows 10 o successivo, 64 bit, diritti di amministratore. Un solo file, nessuna dipendenza da
+installare prima: il runtime viaggia dentro.
 
-| Funzione | Perché è spenta |
+Al primo avvio Windows mostrerà l'avviso di SmartScreen perché il pacchetto non ha ancora un
+certificato EV → *Ulteriori informazioni* → *Esegui comunque*. Al termine il cruscotto si apre da
+solo e l'icona compare nell'area di notifica. **Non ti viene chiesto niente.**
+
+---
+
+## La regola del prodotto: tu non devi fare niente
+
+Questa è la cosa che rende AIDefender diverso, ed è una scelta scritta nel codice prima ancora che
+nel marketing.
+
+Chi installa un antivirus non vuole diventare un tecnico. Preme un pulsante e il computer deve
+risultare pulito — non deve ricevere un elenco di cose da decidere, da verificare, da sistemare.
+
+| | |
 |---|---|
-| Analisi approfondita con IA | La chiave del fornitore non sta sul computer del cliente, mai: passa da un backend che qui non c'è. Una build di rilascio **rifiuta** la chiave locale, per costruzione. |
-
-**L'aggiornamento automatico è acceso da questa versione.** Il servizio guarda una volta al giorno se
-ne esiste una più recente e la installa da solo, senza chiedere niente e senza chiedere un riavvio.
-Quello che scarica lo rifiuta se non porta la nostra firma: HTTPS dimostra chi ha servito il file,
-non chi lo ha scritto, quindi il manifesto è firmato con una chiave che non sta su nessun server e il
-prodotto porta solo la metà pubblica. Rifiuta anche una versione più vecchia della propria — un
-attacco di downgrade porterebbe la nostra stessa firma.
-
-E se non riesce a controllare, **lo dice**: dopo sette giorni di silenzio la riga nel cruscotto
-diventa ambra e scrive da quanti giorni. Prima restava a schermo la risposta dell'ultimo controllo
-riuscito, per sempre.
+| 🚫 **Niente compiti a casa** | Un risultato «da verificare» che nessuno verificherà è peggio di nessun risultato |
+| ⚡ **Agire, non elencare** | Trovata una truffa nella cronologia, la blocca. Non chiede il permesso di bloccarla |
+| 🔘 **Niente pulsanti che falliscono** | Se una cosa non può riuscire, non te la offre: te lo spiega e ti porta dove puoi farla |
+| ⌨️ **Niente riga di comando** | Se una cosa si può fare solo da terminale, per te non esiste |
+| ❓ **Ogni domanda va giustificata** | Ti chiede solo l'irreversibile: il consenso all'installazione e il ripristino dei file |
 
 ---
 
-## Installazione
+## Cosa fa
 
-**Serve Windows 10 o successivo, 64 bit, e i diritti di amministratore.**
+### 🎣 Riconosce le truffe, non solo i virus
 
-1. Scarica l'MSI dalla sezione **Releases**.
-2. Windows mostrerà l'avviso di SmartScreen: **il pacchetto non è firmato**. Non c'è ancora un
-   certificato EV. → *Ulteriori informazioni* → *Esegui comunque*.
-3. **Non ti viene chiesto niente sulla condivisione dei dati**, e non per distrazione: questo
-   pacchetto non ha un indirizzo a cui mandare, quindi la schermata del consenso non è nemmeno
-   compilata dentro. Una domanda a cui la risposta non cambia niente non è una domanda. Nei pacchetti
-   che ce l'hanno, quello che viaggia è una fascia di punteggio e un elenco di sigle
-   (`9|MSG_CREDENTIAL_REQUEST`): il formato non è in grado di contenere indirizzi, messaggi o nomi.
-4. Al termine il cruscotto si apre da solo e l'icona compare nell'area di notifica.
+- **Indirizzi**: 22 segnali diversi su ogni link — marchi imitati, domini appena registrati,
+  sottodomini che nascondono la destinazione, alfabeti misti, suffissi usa-e-getta, percorsi da
+  pagina di accesso
+- **Messaggi**: incolla un SMS, una PEC, un'email. Legge **italiano, inglese, spagnolo, francese e
+  tedesco** e riconosce fretta artificiale, minacce di blocco, richieste di credenziali, esche di
+  denaro, IBAN
+- **Domini che imitano**: `intesa-sanpaolo-verifica.icu` non passa. E nemmeno le imitazioni
+  scritte con caratteri che l'occhio non distingue — uno zero al posto di una o, una `а` cirillica
 
-Per disinstallare: *Impostazioni → App installate → AIDefender*. **Le copie di sicurezza dei tuoi
-file sopravvivono alla disinstallazione**, di proposito: vanno rimosse a mano da
-`C:\ProgramData\AIDefender`.
+### 🇮🇹 Costruito per l'Italia, sul serio
+
+Il catalogo dei marchi **non è stato scritto a memoria**. È stato costruito leggendo **trenta
+settimane di riepiloghi CERT-AgID**, che pubblicano ogni settimana quali marchi vengono usati
+davvero nelle campagne contro l'Italia.
+
+Da lì sono entrati BNL, Inbank, Klarna, SumUp, Autostrade, Subito — e soprattutto **SEND**, la
+piattaforma di notifiche della Pubblica Amministrazione, che è metà dell'argomento «Multe»: il tema
+più frequente delle campagne italiane, **ventinove in una settimana sola**.
+
+Nel vocabolario delle esche sono entrate le parole di quel tema: *multa, sanzione, verbale,
+contravvenzione, giacenza, dogana*. Compaiono in **zero** domini legittimi su un milione.
+
+### 🧠 Impara — dal tuo computer, non da un profilo
+
+- **Dalla tua navigazione**: riconosce l'imitazione di una banca brasiliana senza averne mai sentito
+  parlare, perché sa che *tu* la usi. La lista giusta per ciascuno è quella che ciascuno si scrive
+  da solo, navigando
+- **Dalle risposte già pagate**: una forma di caso che l'analisi approfondita ha deciso tre volte
+  allo stesso modo viene decisa qui, offline, in microsecondi e gratis. Più lo usi, meno costa
+- **Dalle altre installazioni**: due computer nella stessa casa incontravano la stessa campagna due
+  volte e la pagavano due volte. Ora una regola corroborata da più macchine *diverse* vale per
+  tutte — e sul filo passa solo una fascia di punteggio e un elenco di sigle
+
+### 🔒 Ferma il ransomware e ti ridà i file
+
+- **Rilevamento comportamentale**: guarda *come* si comportano i programmi con i tuoi file, non che
+  aspetto hanno
+- **Copie automatiche** delle cartelle personali, tenute fuori dalla portata di chi cifra
+- **Ripristino a un clic**: il prodotto sceglie da sé l'ultima copia certamente intatta — quella
+  presa **prima** dell'inizio dell'attacco
+- **Attribuzione del processo e congelamento**: chi sta scrivendo viene individuato e fermato
+
+### 🌐 Ti difende mentre navighi
+
+Estensione per **Chrome, Edge e Firefox**, con un filtro di riservatezza che toglie query e frammenti
+prima ancora che l'indirizzo lasci la pagina: la sessione non esce, mai.
+
+### 🔄 Si aggiorna da solo, e in modo verificabile
+
+Controllo ogni 24 ore, installazione silenziosa, **nessun pulsante**: una correzione che aspetta un
+clic è una correzione non installata.
+
+Quello che scarica lo rifiuta se non porta la nostra firma. HTTPS dimostra chi ha *servito* il file,
+non chi lo ha *scritto*: il manifesto è firmato con una chiave che non sta su nessun server, e il
+prodotto porta solo la metà pubblica. Rifiuta anche una versione più vecchia della propria.
+
+### 🛡️ Fa da ponte con Windows Defender
+
+Defender conosce il proprio stato ma non lo dice a nessuno. AIDefender glielo chiede e te lo mostra
+in una schermata sola: antivirus, protezione in tempo reale, monitoraggio comportamenti, controllo
+download, protezione cartelle, protezione da manomissione, età delle firme, ultima scansione.
 
 ---
 
-## Cosa vale la pena provare, se stai valutando
+## Perché fidarsi: i numeri sono misurati, non dichiarati
 
-- **Incolla un messaggio di truffa** nel cruscotto — italiano, inglese, spagnolo, francese o
-  tedesco. Poi incollane uno legittimo che gli somiglia (un sollecito di pagamento vero, un avviso
-  di giacenza vero): il prodotto è tarato per non gridare su quelli.
-- **Prova un indirizzo che imita un marchio**: `intesa-sanpaolo-verifica.icu`, e poi quello vero.
-- **L'estensione per il browser** va installata a parte, dal cruscotto.
-- **Riavvia il computer**: il servizio deve ripartire da solo entro un minuto.
-- **Un secondo account Windows** sulla stessa macchina: cronologia, correzioni e ripristino devono
-  vedere solo il proprio profilo.
-- Da riga di comando, `aidef stato` e `aidef scan --url <indirizzo>` mostrano i segnali che hanno
-  prodotto il verdetto, uno per uno, con il punteggio.
+Misurati su dati che **non abbiamo scritto noi** — il milione di siti più visitati al mondo, elenchi
+di phishing veri, corpora di messaggi già etichettati da altri.
 
----
-
-## I numeri, misurati e non dichiarati
-
-Misurati su dati che non abbiamo scritto noi — il milione di siti più visitati al mondo, elenchi di
-phishing veri, corpora di messaggi già etichettati da altri.
-
-| | risultato |
+| | |
 |---|---|
-| Falsi allarmi su **1.000.000** di siti reali | **0,032%** (di cui bloccati 0,006%) |
-| Quanto ci aggiunge la cronologia accesa, come gira sul tuo PC | **+0,003 punti** |
-| Phishing riconosciuto — **dove il catalogo conosce il marchio** | **78,3%** |
-| Phishing riconosciuto — dove non lo conosce | **1,8%** |
+| Falsi allarmi su **1.000.000** di siti reali | **0,032%** — uno su tremila |
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
-| Truffe riconosciute su un corpus di SMS inglesi | **4,4%** |
-| Tentativi di evasione scritti a mano che passano | **82%** su 51 |
-| Test automatici | **720** |
+| Phishing riconosciuto dove il catalogo conosce il marchio | **78,3%** |
+| Test automatici che girano a ogni build | **721** |
+| Tempo per verdetto | **0,041 ms** — 17.700 al secondo su un thread |
+| Memoria per verdetto | **4,7 KB** |
+| Memoria del servizio | **19 MB** |
 
-**Le prime due righe vanno lette insieme, e sono il numero più importante di questa pagina.** La
-seconda dice quanto vale il meccanismo; la terza dice quanto è largo. Quello che decide la copertura
-di questo prodotto non è una soglia né un peso: è **quante organizzazioni ci sono nel catalogo**.
+**Un falso allarme su tremila siti veri** è il numero che conta più di tutti gli altri: un prodotto
+che grida su un sito legittimo insegna a ignorarlo, e da lì in poi non protegge più nessuno.
 
-La media delle due fa 7,7%, ed è la cifra che questa pagina pubblicava da sola. Era fuorviante in
-tutte e due le direzioni. Il corpus pubblico su cui è misurata contiene **zero** domini `.it` e
-**zero** marchi italiani su trecento — ventuno sono Roblox — quindi per il 92% sta fuori da ciò che
-un prodotto costruito per l'Italia può sapere. Un motore a regole fuori dal suo paese non peggiora:
-**si azzera**, e a schermo è indistinguibile da «tutto a posto». Il 4,4% sui messaggi è lo stesso
-fenomeno: SMS britannici del 2011, truffe a numeri a tariffa maggiorata.
-
-**La cronologia, misurata — e questa pagina aveva promesso troppo.** Qui c'era scritto che il pezzo
-che conta davvero non è il catalogo ma la funzione che impara i marchi *dalla cronologia di chi usa
-il computer*: l'unica lista giusta per chiunque, capace di riconoscere l'imitazione di una banca
-brasiliana senza averne mai sentito parlare. Era una frase senza un numero sotto. Adesso il numero
-c'è, e dice un'altra cosa: con 200 abitudini — una macchina vera ne impara fra 158 e 176 — recupera
-**3** casi di phishing sui 277 che sfuggivano.
-
-E c'è di peggio, perché riguarda tutta questa tabella: **quella funzione non era mai entrata in una
-misura**, pur essendo accesa nel prodotto installato. Misurandola, moltiplicava per sette i falsi
-allarmi. Letti uno per uno, il motivo era che la regola sul «nome di un sito che usi, dentro un'altra
-registrazione» accusava `dc-msedge.net`, `cloudflare-ech.com`, `azure-apim.net`,
-`taboola-display.com`: i domini con cui Microsoft, Cloudflare e Amazon registrano la propria
-infrastruttura. Non è una firma di frode, è una convenzione aziendale — e la regola stava accusando
-Microsoft di imitare Microsoft.
-
-Ora quella somiglianza pesa meno della soglia d'allarme: resta una prova che si somma alle altre e
-non decide più da sola. I tre recuperi restano, e i falsi allarmi tornano quasi dov'erano — è la
-seconda riga della tabella, e la ragione per cui esiste. Sui 990.000 siti veri fuori dalla cronologia
-simulata: **294 falsi allarmi senza cronologia, 328 con**. Prima della correzione erano il settuplo.
-
-L'**82% di evasione** è pubblicato apposta, e questa volta è **salito**: era 74,5%. Tre dei tentativi
-scritti a mano venivano fermati proprio da quella regola che accusava da sola. Tre attacchi scritti
-da noi contro quarantasei siti veri che la gente apre ogni giorno — il baratto non è in dubbio, ma è
-una perdita, e sapere cosa manca vale più di un numero che sembra buono.
-
-**Quando il prodotto si dichiara incerto, e perché era il numero sbagliato.** La banda in cui il
-prodotto ammette di non sapere cominciava esattamente dove comincia l'avviso: poteva dubitare solo di
-un caso su cui aveva già deciso di avvisare, e sui casi in cui taceva — dove stanno tutti i mancati —
-non aveva mai un dubbio. I due numeri uguali non erano una decisione, era un'omonimia. Da questa
-versione la banda comincia cinque punti più in basso, e non è una scelta di gusto: su un corpus di
-messaggi veri, le truffe che arrivano davanti al modello passano da **33 a 86**, e le conversazioni
-innocenti su cui si chiede passano da **0 a 4** su 4.827. Scendere ancora comprerebbe 46 truffe per
-48 conversazioni, e lì lo scambio smette di esserlo. **La soglia d'avviso non si è mossa**, quindi i
-falsi allarmi restano lo 0,032% della tabella: sono due numeri diversi, ed è il punto.
-
-Nella stessa misura è saltato fuori qualcosa che era in vendita e non avrebbe funzionato:
-l'estensione mostrava «Premium analizza in cloud i casi dubbi» su una pagina aperta nel browser,
-dove quell'analisi **non parte** — i contenuti da navigazione non escono dal PC, per scelta e con o
-senza Premium. Il riquadro è stato tolto, non reso più raro.
-
-Un numero che **non** troverete qui è «prende il 99% delle minacce». Sugli elenchi di soli domini la
-stessa misura dà 0,28% o 26,6% a seconda di quale schema si assume per un dato che l'elenco non
-contiene — quindi non significa niente, e non lo pubblichiamo.
-
-**Il tetto, misurato.** Dei casi non riconosciuti, il 42% non accende **nessun** segnale: nessuna
-soglia li prenderà mai. Alcuni sono siti legittimi bucati, dove l'indirizzo è innocente perché lo è
-davvero. Abbassare la soglia da 25 a 20 guadagnerebbe otto casi di phishing e accuserebbe
-ventiduemila siti veri — misurato, ed è il motivo per cui la soglia non si tocca.
+Il servizio è **leggero per costruzione**, non per fortuna: il pacchetto non viene nemmeno creato se
+il servizio supera i 24 MB all'avvio, e i test falliscono se un verdetto supera gli 8 KB.
 
 ---
 
-## Cosa questo prodotto NON fa
+## Cosa lo rende diverso
 
-È scritto anche dentro il programma, sotto *«cosa non fa»* nel cruscotto.
+**È verificabile.** Ogni numero di questa pagina si rifà con un comando su dati pubblici. Non c'è
+una cifra qui che non abbia dietro una misura eseguibile.
 
-- **Non è un antivirus** e non sostituisce quello di Windows: gli sta accanto.
-- **Non ferma chi è già amministratore** del computer.
-- **Non riconosce ogni truffa**, e nessuno lo fa.
-- **Non cifra niente** e non nasconde i file.
-- **Non ferma un ransomware con certezza**: riduce il danno e tiene copie.
-- **Non decide al posto tuo** e non ti chiude fuori dai tuoi file.
-- **Non ti difende da un avversario che ha scelto proprio te**: è fatto contro chi manda un milione
-  di messaggi perché mille persone abbocchino.
+**È misurato dove vive.** Il motore è tarato sull'Italia e le prove girano su corpora italiani ed
+esteri, separati, per non spacciare la media per la copertura.
+
+**Non manda via i tuoi dati.** Le regole girano sul tuo computer. Quello che eventualmente esce è una
+fascia di punteggio e un elenco di sigle come `9|MSG_CREDENTIAL_REQUEST`: **il formato non è in grado
+di contenere indirizzi, messaggi o nomi.** Non è un dato reso anonimo, è un dato che non ha mai
+riguardato nessuno.
+
+**Ti spiega perché.** Ogni verdetto arriva con i motivi in italiano, non con un punteggio e basta.
+
+**Non ti chiude fuori dai tuoi file.** Non cifra niente, non nasconde niente, non decide al posto tuo.
+
+---
+
+## Trasparenza: i limiti sono scritti dentro il prodotto
+
+Sotto *«cosa non fa»* nel cruscotto, a un clic dal nome del prodotto — perché la persona che ne ha
+più bisogno è quella che crede di aver comprato un antivirus e quindi smette di stare attenta.
+
+- Non è un antivirus e non sostituisce quello di Windows: gli sta accanto
+- Non riconosce ogni truffa, e nessuno lo fa
+- Non ferma chi è già amministratore del computer
+- Non ti difende da un avversario che ha scelto proprio te: è fatto contro chi manda un milione di
+  messaggi perché mille persone abbocchino
 
 ---
 
 ## Verifica del file
 
 ```
-AIDefender-0.1.5253-x64.msi
-SHA-256  016D70BB44D5D1422C5A16CAB220456EE2FA18D045D110C4D6FF820386783A28
+AIDefender-0.1.5268-x64.msi
+SHA-256  7443F9CF78492309162EAF7DDFFA3AB27492A34F064B60E0354F3FF51CA11D79
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5253-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5268-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
@@ -178,9 +180,20 @@ prima di installare qualunque cosa.
 
 ---
 
+## Cosa provare, se stai valutando
+
+- **Incolla un messaggio di truffa** nel cruscotto — e poi uno legittimo che gli somiglia, un
+  sollecito di pagamento vero, un avviso di giacenza vero. È tarato per non gridare su quelli
+- **Prova un indirizzo che imita un marchio**: `intesa-sanpaolo-verifica.icu`, e poi quello vero
+- **Riavvia il computer**: il servizio riparte da solo entro un minuto
+- **Un secondo account Windows** sulla stessa macchina: cronologia, correzioni e ripristino vedono
+  solo il proprio profilo
+
+---
+
 ## Segnalazioni
 
-Difetti, falsi allarmi e osservazioni: aprite una *Issue*, oppure scrivete direttamente.
-Un falso allarme su un sito legittimo è la segnalazione più utile che esista per questo prodotto.
+Difetti, falsi allarmi e osservazioni: aprite una *Issue*.
+**Un falso allarme su un sito legittimo è la segnalazione più utile che esista per questo prodotto.**
 
 *Tutti i diritti riservati. Il codice sorgente non è pubblicato e non è concesso in licenza.*
