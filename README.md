@@ -144,7 +144,7 @@ di phishing veri, corpora di messaggi già etichettati da altri.
 | Falsi allarmi su **1.000.000** di siti reali | **0,032%** — uno su tremila |
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Phishing riconosciuto dove il catalogo conosce il marchio | **78,3%** |
-| Test automatici che girano a ogni build | **743** |
+| Test automatici che girano a ogni build | **772** |
 | Tempo per verdetto | **0,041 ms** — 17.700 al secondo su un thread |
 | Memoria per verdetto | **4,7 KB** |
 | Memoria del servizio | **19 MB** |
@@ -219,12 +219,12 @@ più bisogno è quella che crede di aver comprato un antivirus e quindi smette d
 ## Verifica del file
 
 ```
-AIDefender-0.1.5276-x64.msi
-SHA-256  C18C903DFDF12C1F4C4CA64FC33F5722816C0F694DC6EB6367959667642F47F2
+AIDefender-0.1.5290-x64.msi
+SHA-256  F2AAC2A10C0077AAE7A12ADE685B5EB2185A54D2220969EC96683E93FC5AB259
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5276-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5290-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
