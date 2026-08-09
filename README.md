@@ -48,12 +48,13 @@ risultare pulito — non deve ricevere un elenco di cose da decidere, da verific
 
 ### 🎣 Riconosce le truffe, non solo i virus
 
-- **Indirizzi**: 22 segnali diversi su ogni link — marchi imitati, domini appena registrati,
+- **Indirizzi**: **19 segnali diversi** su ogni link — marchi imitati, domini appena registrati,
   sottodomini che nascondono la destinazione, alfabeti misti, suffissi usa-e-getta, percorsi da
   pagina di accesso
-- **Messaggi**: incolla un SMS, una PEC, un'email. Legge **italiano, inglese, spagnolo, francese e
-  tedesco** e riconosce fretta artificiale, minacce di blocco, richieste di credenziali, esche di
-  denaro, IBAN
+- **Messaggi**: incolla un SMS, una PEC, un'email. Legge **italiano, inglese, spagnolo, francese,
+  portoghese e tedesco** e riconosce fretta artificiale, minacce di blocco, richieste di credenziali,
+  esche di denaro, IBAN. **E legge anche il link che il messaggio porta dentro**, che è quasi sempre
+  l'arma vera
 - **Domini che imitano**: `intesa-sanpaolo-verifica.icu` non passa. E nemmeno le imitazioni
   scritte con caratteri che l'occhio non distingue — uno zero al posto di una o, una `а` cirillica
 
