@@ -48,15 +48,24 @@ risultare pulito — non deve ricevere un elenco di cose da decidere, da verific
 
 ### 🎣 Riconosce le truffe, non solo i virus
 
-- **Indirizzi**: **19 segnali diversi** su ogni link — marchi imitati, domini appena registrati,
+- **Indirizzi**: **17 segnali diversi** su ogni link — marchi imitati, domini appena registrati,
   sottodomini che nascondono la destinazione, alfabeti misti, suffissi usa-e-getta, percorsi da
   pagina di accesso
 - **Messaggi**: incolla un SMS, una PEC, un'email. Legge **italiano, inglese, spagnolo, francese,
-  portoghese e tedesco** e riconosce fretta artificiale, minacce di blocco, richieste di credenziali,
-  esche di denaro, IBAN. **E legge anche il link che il messaggio porta dentro**, che è quasi sempre
-  l'arma vera
+  portoghese e tedesco** e riconosce con **8 segnali** fretta artificiale, minacce di blocco,
+  richieste di credenziali, esche di denaro, IBAN. **E legge anche il link che il messaggio porta
+  dentro**, che è quasi sempre l'arma vera — anche quando è scritto nudo, senza `http`, come lo
+  scrive chi truffa un ragazzino
 - **Domini che imitano**: `intesa-sanpaolo-verifica.icu` non passa. E nemmeno le imitazioni
   scritte con caratteri che l'occhio non distingue — uno zero al posto di una o, una `а` cirillica
+
+### 🎮 E le truffe che arrivano ai ragazzini
+
+I Robux e i V-Bucks «gratis», il generatore che non esiste, l'amico che chiede la password
+dell'account, il «non dirlo ai tuoi». Sette casi scritti a mano su sette, con otto messaggi veri che
+usano le stesse parole — un amico che regala davvero una skin, l'avviso antitruffa di Roblox: **zero
+accusati**. La riservatezza non basta a far scattare niente da sola, perché la stessa frase la scrive
+un genitore che nasconde un regalo.
 
 ### 🇮🇹 Costruito per l'Italia, sul serio
 
@@ -143,11 +152,18 @@ di phishing veri, corpora di messaggi già etichettati da altri.
 |---|---|
 | Falsi allarmi su **1.000.000** di siti reali | **0,032%** — uno su tremila |
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
-| Phishing riconosciuto dove il catalogo conosce il marchio | **78,3%** |
-| Test automatici che girano a ogni build | **772** |
+| Phishing riconosciuto dove il catalogo conosce il marchio | **86,4%** |
+| Phishing riconosciuto dove **non** lo conosce | **1,6%** |
+| Test automatici che girano a ogni build | **822** |
 | Tempo per verdetto | **0,041 ms** — 17.700 al secondo su un thread |
 | Memoria per verdetto | **4,7 KB** |
-| Memoria del servizio | **19 MB** |
+| Memoria del servizio | **18-20 MB** all'avvio |
+
+**Le due righe sul phishing vanno lette insieme, ed è il motivo per cui la seconda è pubblicata.** Un
+motore a regole non degrada fuori dalla conoscenza che ha: si azzera, e sullo schermo è
+indistinguibile da «tutto a posto». L'1,6% è il tetto vero del prodotto dove il marchio imitato non è
+in catalogo, e si alza in un modo solo — allargando il catalogo. Chi pubblica solo l'86,4% sta
+pubblicando la media di un corpus, non una capacità.
 
 **Un falso allarme su tremila siti veri** è il numero che conta più di tutti gli altri: un prodotto
 che grida su un sito legittimo insegna a ignorarlo, e da lì in poi non protegge più nessuno.
@@ -205,7 +221,8 @@ cifra qui che non abbia dietro una misura eseguibile.
 
 ## Trasparenza: i limiti sono scritti dentro il prodotto
 
-Sotto *«cosa non fa»* nel cruscotto, a un clic dal nome del prodotto — perché la persona che ne ha
+A un clic dal nome del prodotto c'è la finestra *«cosa fa»*: diciotto capacità in sei gruppi, una
+riga ciascuna. **In fondo, nella stessa finestra, ci sono i limiti** — perché la persona che ne ha
 più bisogno è quella che crede di aver comprato un antivirus e quindi smette di stare attenta.
 
 - Non è un antivirus e non sostituisce quello di Windows: gli sta accanto
@@ -219,12 +236,12 @@ più bisogno è quella che crede di aver comprato un antivirus e quindi smette d
 ## Verifica del file
 
 ```
-AIDefender-0.1.5290-x64.msi
-SHA-256  F2AAC2A10C0077AAE7A12ADE685B5EB2185A54D2220969EC96683E93FC5AB259
+AIDefender-0.1.5347-x64.msi
+SHA-256  230B1D56A7087CA858D9ECC09D5D433305003CA3847DDB619D9F04EE62644238
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5290-x64.msi -Algorithm SHA256
+Get-FileHash .\AIDefender-0.1.5347-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
