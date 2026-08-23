@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CetrAI — Windows ti protegge dai virus. CetrAI ti protegge dalle truffe.</title>
+<meta name="description" content="Protezione anti-truffa per Windows, costruita per l'Italia. Riconosce SMS, email e siti che imitano banche e Pubblica Amministrazione, ferma il ransomware e ti ridà i file. Gratis.">
+<meta property="og:title" content="CetrAI — ti protegge dalle truffe">
+<meta property="og:description" content="Il tuo antivirus ferma i file infetti. Nessun file infetto ti ha mai chiesto le credenziali della banca.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+<style>
+:root{
+  --bg:#0a0d14; --bg2:#0f141d; --card:#141b26; --line:#212c3d;
+  --ink:#eaf0f8; --dim:#93a3ba; --dim2:#6b7d96;
+  --acc:#3ddc97; --acc2:#28b880; --warn:#ffb020; --bad:#ff5c5c;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+a{color:var(--acc); text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{line-height:1.2; margin:0 0 .5em}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem); letter-spacing:-.02em}
+h3{font-size:1.12rem}
+p{margin:0 0 1em}
+section{padding:88px 0; border-top:1px solid var(--line)}
+.eyebrow{
+  font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--acc); font-weight:700; margin-bottom:14px;
+}
+.lede{font-size:1.14rem; color:var(--dim); max-width:64ch}
+
+/* ---------- barra ---------- */
+.nav{
+  position:sticky; top:0; z-index:50; background:rgba(10,13,20,.86);
+  backdrop-filter:blur(12px); border-bottom:1px solid var(--line);
+}
+.nav .wrap{display:flex; align-items:center; gap:20px; height:62px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.02em; font-size:1.12rem; color:var(--ink)}
+.logo span{color:var(--acc)}
+.nav nav{margin-left:auto; display:flex; gap:24px; align-items:center}
+.nav nav a{color:var(--dim); font-size:.93rem; font-weight:500}
+.nav nav a:hover{color:var(--ink); text-decoration:none}
+.nav .btn{padding:9px 18px; font-size:.9rem}
+@media(max-width:760px){ .nav nav a:not(.btn){display:none} }
+
+/* ---------- pulsanti ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:10px; justify-content:center;
+  background:var(--acc); color:#04160e; font-weight:700; border-radius:10px;
+  padding:15px 30px; border:0; cursor:pointer; font-size:1.02rem;
+  transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+  box-shadow:0 6px 24px rgba(61,220,151,.22);
+}
+.btn:hover{background:var(--acc2); transform:translateY(-2px); text-decoration:none; box-shadow:0 10px 32px rgba(61,220,151,.32)}
+.btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--line); box-shadow:none; font-weight:600}
+.btn.ghost:hover{border-color:var(--dim2); background:var(--card); transform:none}
+
+/* ---------- apertura ---------- */
+.hero{padding:96px 0 84px; position:relative; overflow:hidden}
+.hero::before{
+  content:""; position:absolute; inset:-40% 20% auto -10%; height:620px;
+  background:radial-gradient(ellipse at center,rgba(61,220,151,.13),transparent 62%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative}
+.tag{
+  display:inline-flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600;
+  color:var(--acc); background:rgba(61,220,151,.09); border:1px solid rgba(61,220,151,.28);
+  padding:6px 14px; border-radius:999px; margin-bottom:26px;
+}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4rem); letter-spacing:-.035em; max-width:17ch}
+.hero h1 em{font-style:normal; color:var(--acc)}
+.hero .lede{font-size:clamp(1.05rem,2vw,1.28rem); max-width:60ch; margin-top:22px}
+.cta{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:36px}
+.meta{color:var(--dim2); font-size:.88rem; margin-top:16px}
+.meta b{color:var(--dim); font-weight:600}
+
+/* ---------- griglie ---------- */
+.grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:26px;
+  transition:border-color .15s ease, transform .15s ease;
+}
+.card:hover{border-color:#31435c; transform:translateY(-2px)}
+.card .ico{font-size:1.6rem; display:block; margin-bottom:12px}
+.card p{color:var(--dim); font-size:.96rem; margin:0}
+.card p + p{margin-top:.8em}
+
+/* ---------- numeri ---------- */
+.stats{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); margin-top:34px}
+.stat{background:var(--bg2); border:1px solid var(--line); border-radius:14px; padding:24px}
+.stat b{display:block; font-size:2rem; letter-spacing:-.03em; color:var(--acc); line-height:1.1}
+.stat span{display:block; color:var(--dim); font-size:.9rem; margin-top:8px}
+.stat small{display:block; color:var(--dim2); font-size:.78rem; margin-top:8px}
+
+/* ---------- confronto ---------- */
+.tbl{width:100%; border-collapse:collapse; margin-top:30px; font-size:.95rem}
+.tbl th,.tbl td{padding:15px 16px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+.tbl thead th{color:var(--dim2); font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; font-weight:700}
+.tbl thead th:last-child{color:var(--acc)}
+.tbl td:first-child{color:var(--dim); width:30%}
+.tbl td:nth-child(2){color:var(--dim2)}
+.tbl td:last-child{color:var(--ink); font-weight:600}
+.scroll{overflow-x:auto}
+
+/* ---------- onestà ---------- */
+.limits{background:var(--bg2)}
+.limits ul{list-style:none; padding:0; margin:26px 0 0; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.limits li{
+  padding:16px 18px 16px 46px; position:relative; color:var(--dim);
+  background:var(--card); border:1px solid var(--line); border-radius:11px; font-size:.95rem;
+}
+.limits li::before{content:"—"; position:absolute; left:18px; color:var(--bad); font-weight:700}
+
+/* ---------- chiusura ---------- */
+.end{text-align:center; background:linear-gradient(180deg,var(--bg),#0c1a15)}
+.end h2{max-width:20ch; margin-inline:auto}
+.end .lede{margin:0 auto 32px}
+.note{
+  margin-top:30px; font-size:.88rem; color:var(--dim2); max-width:62ch;
+  margin-inline:auto; background:var(--card); border:1px solid var(--line);
+  border-radius:11px; padding:16px 20px; text-align:left;
+}
+.note b{color:var(--warn)}
+code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.9em;
+  background:#1a2331; padding:2px 7px; border-radius:5px; color:#bfe8d4;
+}
+footer{border-top:1px solid var(--line); padding:44px 0; color:var(--dim2); font-size:.88rem}
+footer .wrap{display:flex; gap:22px; flex-wrap:wrap; align-items:center}
+footer a{color:var(--dim)}
+footer .sp{margin-left:auto}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="wrap">
+    <a class="logo" href="#"><span>◆</span> CetrAI</a>
+    <nav>
+      <a href="#problema">Il problema</a>
+      <a href="#cosa-fa">Cosa fa</a>
+      <a href="#numeri">I numeri</a>
+      <a href="#limiti">Limiti</a>
+      <a class="btn" id="nav-dl" href="https://github.com/Grokeador/CetrAI/releases/latest/download/CetrAI-Setup-x64.msi">Scarica</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">◆ Gratis · Windows 10 e 11 · nessuna registrazione</div>
+    <h1>Windows ti protegge dai virus. <em>CetrAI ti protegge dalle truffe.</em></h1>
+    <p class="lede">
+      Il tuo antivirus è bravissimo a fermare i file infetti. Ma <strong>nessun file infetto ti ha mai
+      chiesto le credenziali della banca</strong>: quello lo fa un SMS che sembra di Poste, un link che
+      sembra dell'Agenzia delle Entrate, una telefonata di chi dice di essere la tua banca.
+    </p>
+    <div class="cta">
+      <a class="btn" id="dl" href="https://github.com/Grokeador/CetrAI/releases/latest/download/CetrAI-Setup-x64.msi">
+        ⬇ Scarica CetrAI
+      </a>
+      <a class="btn ghost" href="#cosa-fa">Guarda cosa fa</a>
+    </div>
+    <p class="meta" id="rel">Windows 10 o successivo · 64 bit · un solo file, il runtime viaggia dentro</p>
+  </div>
+</header>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="eyebrow">Il problema</div>
+    <h2>La truffa che ti frega non è quella che hai messo in dubbio.<br>È quella che hai creduto.</h2>
+    <p class="lede">
+      Gli assistenti anti-truffa funzionano quando ti ricordi di aprirli, e su quello che avevi già
+      deciso di controllare. CetrAI parte dal presupposto opposto: <strong>guarda al posto tuo</strong>, e
+      quando trova qualcosa la sistema invece di segnalartela.
+    </p>
+
+    <div class="grid" style="margin-top:36px">
+      <div class="card">
+        <span class="ico">📱</span>
+        <h3>«Il tuo pacco è in giacenza»</h3>
+        <p>Multe, dogana, giacenze, SEND della Pubblica Amministrazione. È il tema più frequente
+        delle campagne contro l'Italia: ventinove in una settimana sola.</p>
+      </div>
+      <div class="card">
+        <span class="ico">📞</span>
+        <h3>«Sono la sua banca, installi questo»</h3>
+        <p>La frode che oggi costa di più in Italia non porta nessun virus: una telefonata, e
+        <strong>sei tu</strong> a installare il programma di controllo remoto. Firmato, legittimo,
+        invisibile a ogni antivirus.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🎮</span>
+        <h3>«Robux gratis, non dirlo ai tuoi»</h3>
+        <p>I generatori che non esistono, l'amico che chiede la password dell'account, il link
+        scritto nudo senza <code>http</code> come lo scrive chi truffa un ragazzino.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cosa-fa">
+  <div class="wrap">
+    <div class="eyebrow">Cosa fa</div>
+    <h2>Preme un pulsante, e il computer risulta a posto</h2>
+    <p class="lede">
+      Nessun elenco di compiti a casa. Trovata una truffa nella cronologia, la blocca — non chiede il
+      permesso di bloccarla.
+    </p>
+
+    <div class="grid" style="margin-top:36px">
+      <div class="card">
+        <span class="ico">🎣</span>
+        <h3>Riconosce le truffe, non solo i virus</h3>
+        <p>17 segnali su ogni link: marchi imitati, domini appena registrati, sottodomini che
+        nascondono la destinazione, alfabeti misti. E legge il messaggio in sei lingue —
+        <strong>compreso il link che porta dentro</strong>, che è quasi sempre l'arma vera.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🇮🇹</span>
+        <h3>Costruito per l'Italia, sul serio</h3>
+        <p>Il catalogo dei marchi non è scritto a memoria: viene da <strong>trenta settimane di
+        riepiloghi CERT-AgID</strong>, che pubblicano quali marchi vengono usati davvero nelle
+        campagne contro l'Italia. BNL, Inbank, Klarna, SumUp, Autostrade, Subito, SEND.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🧠</span>
+        <h3>Impara dal tuo computer, non da un profilo</h3>
+        <p>Riconosce l'imitazione di una banca brasiliana senza averne mai sentito parlare, perché sa
+        che <em>tu</em> la usi. La lista giusta per ciascuno è quella che ciascuno si scrive da solo,
+        navigando — e <strong>non lascia il tuo disco</strong>.</p>
+      </div>
+      <div class="card">
+        <span class="ico">📞</span>
+        <h3>Ti avvisa quando la truffa arriva per telefono</h3>
+        <p>Guarda <strong>quando</strong> è arrivato il programma di controllo remoto. Chi lo usa per
+        lavoro l'ha installato mesi fa; chi sta per essere derubato l'ha installato durante la
+        telefonata ancora in corso.</p>
+      </div>
+      <div class="card">
+        <span class="ico">💳</span>
+        <h3>Sorveglia l'IBAN che hai copiato</h3>
+        <p>Esistono programmi che sostituiscono l'IBAN negli appunti un istante prima che tu lo
+        incolli. A tradirli non è il secondo IBAN — puoi copiarne due — ma la velocità: devono
+        vincere la corsa contro l'incolla.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🔒</span>
+        <h3>Ferma il ransomware e ti ridà i file</h3>
+        <p>Copie automatiche delle cartelle personali, tenute fuori dalla portata di chi cifra.
+        Ripristino a un clic: sceglie da sé l'ultima copia certamente intatta, quella presa
+        <strong>prima</strong> dell'inizio dell'attacco. Non ti chiede quale.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🔔</span>
+        <h3>Toglie a un sito il permesso di interromperti</h3>
+        <p>I finti «il tuo antivirus è scaduto» che compaiono sul desktop arrivano da un permesso di
+        notifica lasciato da una visita di mesi fa. La cronologia sbiadisce, quel permesso resta:
+        CetrAI lo legge nei tre browser e lo toglie.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🔄</span>
+        <h3>Si aggiorna da solo, e in modo verificabile</h3>
+        <p>Nessun pulsante: una correzione che aspetta un clic è una correzione non installata.
+        Quello che scarica lo rifiuta se non porta la firma giusta — HTTPS dimostra chi ha
+        <em>servito</em> il file, non chi lo ha <em>scritto</em>.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🛡️</span>
+        <h3>Fa da ponte con Windows Defender</h3>
+        <p>Defender conosce il proprio stato ma non lo dice a nessuno. CetrAI glielo chiede e te lo
+        mostra in una schermata sola: tempo reale, cartelle protette, età delle firme, ultima
+        scansione.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="numeri" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="eyebrow">I numeri</div>
+    <h2>Misurati, non dichiarati</h2>
+    <p class="lede">
+      Su dati che non abbiamo scritto noi: il milione di siti più visitati al mondo, elenchi di
+      phishing veri, corpora di messaggi già etichettati da altri. Ogni cifra ha una data e un
+      comando che la rifà.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <b>0,032%</b>
+        <span>falsi allarmi su 1.000.000 di siti veri</span>
+        <small>324 su un milione (Tranco), 11 agosto 2026</small>
+      </div>
+      <div class="stat">
+        <b>0</b>
+        <span>conversazioni normali accusate per sbaglio</span>
+        <small>su 4.827 messaggi veri</small>
+      </div>
+      <div class="stat">
+        <b>86,4%</b>
+        <span>phishing riconosciuto dove il catalogo conosce il marchio</span>
+        <small>corpus OpenPhish, 11 agosto 2026</small>
+      </div>
+      <div class="stat">
+        <b>1,6%</b>
+        <span>phishing riconosciuto dove <em>non</em> lo conosce</span>
+        <small>lo stesso corpus — e sì, è pubblicato apposta</small>
+      </div>
+      <div class="stat">
+        <b>1.115</b>
+        <span>test automatici a ogni build</span>
+        <small>23 agosto 2026, avvisi trattati come errori</small>
+      </div>
+      <div class="stat">
+        <b>18–20 MB</b>
+        <span>memoria del servizio</span>
+        <small>il pacchetto non nasce se supera i 24 MB</small>
+      </div>
+    </div>
+
+    <p style="margin-top:34px; max-width:70ch; color:var(--dim)">
+      <strong style="color:var(--ink)">Le due righe sul phishing vanno lette insieme, ed è il motivo
+      per cui la seconda è pubblicata.</strong> Un motore a regole non peggiora fuori dalla conoscenza
+      che ha: si azzera, e sullo schermo è indistinguibile da «tutto a posto». L'1,6% è il tetto vero
+      dove il marchio imitato non è in catalogo. Chi pubblica solo l'86,4% sta pubblicando la media di
+      un corpus, non una capacità.
+    </p>
+    <p style="max-width:70ch; color:var(--dim)">
+      <strong style="color:var(--ink)">Un falso allarme su tremila siti veri</strong> è il numero che
+      conta più di tutti: un prodotto che grida su un sito legittimo insegna a ignorarlo, e da lì in
+      poi non protegge più nessuno.
+    </p>
+  </div>
+</section>
+
+<section id="confronto">
+  <div class="wrap">
+    <div class="eyebrow">Il confronto</div>
+    <h2>Non è l'ennesimo «incolla il messaggio e ti dico se è una truffa»</h2>
+    <div class="scroll">
+      <table class="tbl">
+        <thead><tr><th></th><th>L'assistente che ti dà un parere</th><th>CetrAI</th></tr></thead>
+        <tbody>
+          <tr><td>Devi ricordarti di usarlo</td><td>sì: apri, incolli, aspetti</td><td>no: guarda da sé cronologia, file e indirizzi</td></tr>
+          <tr><td>Cosa ottieni</td><td>un giudizio</td><td>una cosa fatta — il dominio bloccato, il processo fermato</td></tr>
+          <tr><td>Il tuo messaggio</td><td>esce dal tuo computer</td><td>le regole girano qui; esce al massimo una fascia di punteggio</td></tr>
+          <tr><td>Se qualcuno ti cifra i file</td><td>non c'entra niente</td><td>copie automatiche e ripristino a un clic</td></tr>
+          <tr><td>Il catalogo dei marchi</td><td>globale</td><td>trenta settimane di CERT-AgID, per l'Italia</td></tr>
+          <tr><td>I falsi allarmi</td><td>non pubblicati</td><td>0,032% su un milione di siti veri, e te lo rifai da solo</td></tr>
+          <tr><td>Cosa sa di te</td><td>quello che gli mandi</td><td>le tue abitudini, e restano sul tuo disco</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="limiti" class="limits">
+  <div class="wrap">
+    <div class="eyebrow">Onestà</div>
+    <h2>I limiti sono scritti dentro il prodotto, non solo qui</h2>
+    <p class="lede">
+      A un clic dal nome, nella finestra «cosa fa», ci sono anche i limiti — perché la persona che ne
+      ha più bisogno è quella che crede di aver comprato un antivirus e quindi smette di stare attenta.
+    </p>
+    <ul>
+      <li>Non è un antivirus e non sostituisce quello di Windows: gli sta accanto.</li>
+      <li>Non riconosce ogni truffa, e nessuno lo fa.</li>
+      <li>Non ferma chi è già amministratore del tuo computer.</li>
+      <li>Non ti difende da un avversario che ha scelto proprio te: è fatto contro chi manda un milione di messaggi perché mille persone abbocchino.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <div class="eyebrow">Provalo</div>
+    <h2>Installa, e non pensarci più</h2>
+    <p class="lede">
+      Al termine il cruscotto si apre da solo e l'icona compare nell'area di notifica.
+      Non ti viene chiesto niente.
+    </p>
+    <a class="btn" id="dl2" href="https://github.com/Grokeador/CetrAI/releases/latest/download/CetrAI-Setup-x64.msi">
+      ⬇ Scarica CetrAI per Windows
+    </a>
+    <p class="meta" id="rel2" style="text-align:center">gratis · nessuna registrazione · nessuna carta</p>
+
+    <div class="note">
+      <b>Una cosa da sapere prima:</b> il pacchetto non ha ancora un certificato di firma del codice,
+      quindi al primo avvio Windows mostra l'avviso di SmartScreen. È previsto e scritto qui apposta:
+      <em>Ulteriori informazioni</em> → <em>Esegui comunque</em>. Se preferisci controllare prima, ogni
+      release pubblica l'impronta SHA-256 del file, ed è la stessa che il prodotto verifica da sé a
+      ogni aggiornamento.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>CetrAI — protezione anti-truffa per Windows</span>
+    <a href="https://github.com/Grokeador/CetrAI/releases">Tutte le versioni</a>
+    <a href="docs/cosa-fa.md">Cosa fa, in dettaglio</a>
+    <a href="docs/modello-di-minaccia.md">Modello di minaccia</a>
+    <a href="stato.html">Stato delle capacità</a>
+    <span class="sp">Il codice sorgente non è pubblicato.</span>
+  </div>
+</footer>
+
+<script>
+// La versione e la dimensione si chiedono a GitHub invece di essere scritte qui dentro: una pagina
+// che porta un numero di versione a mano diventa falsa al primo rilascio, e nessuno se ne accorge.
+(function () {
+  var url = 'https://api.github.com/repos/Grokeador/CetrAI/releases/latest';
+
+  fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (rel) {
+    if (!rel || !rel.tag_name) { return; }
+
+    var msi = (rel.assets || []).filter(function (a) { return /\.msi$/i.test(a.name); })[0];
+    var mb = msi ? (msi.size / 1048576).toFixed(1) + ' MB · ' : '';
+    var quando = new Date(rel.published_at).toLocaleDateString('it-IT',
+      { day: 'numeric', month: 'long', year: 'numeric' });
+
+    var riga = 'Versione ' + rel.tag_name.replace(/^v/, '') + ' · ' + mb + quando +
+               ' · Windows 10 o successivo, 64 bit';
+
+    var a = document.getElementById('rel');
+    var b = document.getElementById('rel2');
+    if (a) { a.textContent = riga; }
+    if (b) { b.textContent = riga + ' · gratis, nessuna registrazione'; }
+  }).catch(function () {
+    // Nessun numero e' meglio di un numero sbagliato: la riga scritta a mano resta com'e'.
+  });
+})();
+</script>
+
+</body>
+</html>

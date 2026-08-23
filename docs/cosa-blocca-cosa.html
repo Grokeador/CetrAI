@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CetrAI — cosa blocca cosa</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --ink: #14161a; --muted: #5b6270; --line: #d9dde4;
+    --done: #1f9d61; --wip: #d98324; --todo: #c2413b; --idea: #6b6f76; --brand: #1a7f9e;
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12141a; --card: #1a1d25; --ink: #e8eaee; --muted: #9aa2b1; --line: #2b303b;
+      --done: #3fbe80; --wip: #e8a04b; --todo: #e0645d; --idea: #8a919c; --brand: #4fc3e8;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12141a; --card: #1a1d25; --ink: #e8eaee; --muted: #9aa2b1; --line: #2b303b;
+    --done: #3fbe80; --wip: #e8a04b; --todo: #e0645d; --idea: #8a919c; --brand: #4fc3e8;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 20px 60px; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); margin: 0 0 26px; font-size: 14px; }
+  .sub b { color: var(--ink); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 24px; font-size: 13px; color: var(--muted); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+  .scroller { overflow-x: auto; padding-bottom: 8px; }
+  svg { display: block; min-width: 900px; }
+
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+           box-shadow: var(--shadow); padding: 20px 22px; margin: 0 0 20px; }
+  h2 { font-size: 15px; margin: 0 0 12px; letter-spacing: .02em; text-transform: uppercase; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+  tr:last-child td { border-bottom: none; }
+  td.n { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11.5px;
+         font-weight: 600; border: 1px solid currentColor; }
+  .t-done { color: var(--done); } .t-wip { color: var(--wip); }
+  .t-todo { color: var(--todo); } .t-idea { color: var(--idea); }
+  .who { font-size: 12.5px; color: var(--muted); }
+  code { font: 12.5px/1.4 ui-monospace, Consolas, monospace; background: rgba(127,127,127,.13);
+         padding: 1px 5px; border-radius: 4px; }
+  .foot { color: var(--muted); font-size: 13px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>CetrAI — cosa blocca cosa</h1>
+  <p class="sub">Non l'elenco delle cose da fare: <b>le tre porte chiuse</b> e le righe che stanno dietro ciascuna.
+     Nessuna delle tre si apre scrivendo codice.</p>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--done)"></i> fatto — gira nel pacchetto</span>
+    <span><i class="dot" style="background:var(--wip)"></i> in corso — costruito, non ancora provato dov'è vero</span>
+    <span><i class="dot" style="background:var(--todo)"></i> da fare — deciso, nessun codice</span>
+    <span><i class="dot" style="background:var(--idea)"></i> idea — proposta, non scelta</span>
+  </div>
+
+  <div class="panel">
+    <div class="scroller">
+      <svg viewBox="0 0 900 430" role="img" aria-label="Le tre porte chiuse e le capacità che ciascuna blocca">
+        <defs>
+          <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <!-- colonna sinistra: il prodotto -->
+        <g>
+          <rect x="16" y="150" width="196" height="128" rx="10" fill="var(--card)" stroke="var(--done)" stroke-width="1.5"/>
+          <text x="114" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Il prodotto</text>
+          <text x="114" y="202" text-anchor="middle" font-size="12" fill="var(--muted)">motore, servizio, tray,</text>
+          <text x="114" y="219" text-anchor="middle" font-size="12" fill="var(--muted)">ransomware, QR, fascicolo</text>
+          <text x="114" y="247" text-anchor="middle" font-size="20" font-weight="700" fill="var(--done)">72 righe fatte</text>
+          <text x="114" y="265" text-anchor="middle" font-size="11.5" fill="var(--muted)">978 test verdi · installato e provato</text>
+        </g>
+
+        <!-- le tre porte -->
+        <g color="var(--todo)">
+          <line x1="212" y1="196" x2="316" y2="86"  stroke="currentColor" stroke-width="1.5" marker-end="url(#a)"/>
+          <line x1="212" y1="214" x2="316" y2="214" stroke="currentColor" stroke-width="1.5" marker-end="url(#a)"/>
+          <line x1="212" y1="232" x2="316" y2="342" stroke="currentColor" stroke-width="1.5" marker-end="url(#a)"/>
+        </g>
+
+        <g>
+          <rect x="320" y="46" width="212" height="86" rx="10" fill="var(--card)" stroke="var(--todo)" stroke-width="1.5"/>
+          <text x="426" y="72" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--todo)">1 · L'estensione non è</text>
+          <text x="426" y="90" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--todo)">caricata in nessun browser</text>
+          <text x="426" y="112" text-anchor="middle" font-size="11.5" fill="var(--muted)">«collegato, mai sentito» ×3</text>
+
+          <rect x="320" y="172" width="212" height="86" rx="10" fill="var(--card)" stroke="var(--todo)" stroke-width="1.5"/>
+          <text x="426" y="198" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--todo)">2 · Nessun indirizzo</text>
+          <text x="426" y="216" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--todo)">pubblico per il backend</text>
+          <text x="426" y="238" text-anchor="middle" font-size="11.5" fill="var(--muted)">tutto gira su localhost</text>
+
+          <rect x="320" y="300" width="212" height="86" rx="10" fill="var(--card)" stroke="var(--todo)" stroke-width="1.5"/>
+          <text x="426" y="326" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--todo)">3 · Conti e firme</text>
+          <text x="426" y="344" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--todo)">da comprare</text>
+          <text x="426" y="366" text-anchor="middle" font-size="11.5" fill="var(--muted)">certificato EV, store, laboratorio</text>
+        </g>
+
+        <!-- cosa sblocca -->
+        <g color="var(--muted)">
+          <line x1="532" y1="89"  x2="612" y2="89"  stroke="currentColor" stroke-width="1.2" marker-end="url(#a)"/>
+          <line x1="532" y1="215" x2="612" y2="215" stroke="currentColor" stroke-width="1.2" marker-end="url(#a)"/>
+          <line x1="532" y1="343" x2="612" y2="343" stroke="currentColor" stroke-width="1.2" marker-end="url(#a)"/>
+        </g>
+
+        <g font-size="12.5" fill="var(--ink)">
+          <rect x="616" y="42" width="268" height="94" rx="10" fill="var(--card)" stroke="var(--line)"/>
+          <text x="632" y="64" font-weight="600" fill="var(--wip)">3 righe in corso</text>
+          <text x="632" y="84">la finestra «chiama Microsoft»</text>
+          <text x="632" y="102">i messaggi privati dei social</text>
+          <text x="632" y="120">il ponte provato in un browser vero</text>
+
+          <rect x="616" y="168" width="268" height="94" rx="10" fill="var(--card)" stroke="var(--line)"/>
+          <text x="632" y="190" font-weight="600" fill="var(--wip)">2 righe + 2 idee</text>
+          <text x="632" y="210">analisi approfondita fuori da qui</text>
+          <text x="632" y="228">il riepilogo a un familiare</text>
+          <text x="632" y="246" fill="var(--muted)">esperienza condivisa fra installazioni</text>
+
+          <rect x="616" y="296" width="268" height="94" rx="10" fill="var(--card)" stroke="var(--line)"/>
+          <text x="632" y="318" font-weight="600" fill="var(--todo)">3 righe</text>
+          <text x="632" y="338">SmartScreen non avvisa più</text>
+          <text x="632" y="356">estensione negli store</text>
+          <text x="632" y="374">validazione da un laboratorio</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Le 8 idee ancora aperte — nessuna è lavoro promesso</h2>
+    <table>
+      <tr><th>Idea</th><th>Che cosa serve prima</th><th class="n">Chi</th></tr>
+      <tr><td>Le estensioni del browser arrivate da poco</td>
+          <td><b>misurata il 16/8</b>: 41 voci, 27 sono il browser stesso; 2 messe da un programma, nessuna legge ogni sito. La regola tacerebbe. Manca solo la decisione — il campione è <b>una macchina sola</b></td>
+          <td class="n who">decidere</td></tr>
+      <tr><td>Il file appena scaricato da un sito bocciato</td>
+          <td>da misurare: quanti eseguibili scarica in un mese una macchina normale</td><td class="n who">misurare</td></tr>
+      <tr><td>Defender spento durante il controllo remoto</td>
+          <td>i due sensori esistono già; costa una classe</td><td class="n who">decidere</td></tr>
+      <tr><td>Il motore sui messaggi non ha una bocca</td>
+          <td>dove incolla il messaggio la persona: è una scelta di interfaccia</td><td class="n who">decidere</td></tr>
+      <tr><td>Quante volte il prodotto parla davvero, in un mese</td>
+          <td>si ricava dalla cronologia che c'è già</td><td class="n who">decidere</td></tr>
+      <tr><td>Le truffe dentro i giochi (mondi VR)</td>
+          <td>rifiutata per mancanza del dato, non di tempo</td><td class="n who">chiusa</td></tr>
+      <tr><td>Un familiare che riceve il riepilogo</td>
+          <td>dietro la porta 2 — e prima va deciso dove finiscono i dati del secondo destinatario</td><td class="n who">porta 2</td></tr>
+      <tr><td>Modalità Anziani (SilverMode)</td>
+          <td>bloccare invece di avvisare: cambia il prodotto, non l'aspetto</td><td class="n who">decidere</td></tr>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>A livello di codice, in senso stretto</h2>
+    <table>
+      <tr><th>Riga</th><th>Perché non è chiusa</th><th class="n">Stato</th></tr>
+      <tr><td>Riaccendere Defender quando è spento</td>
+          <td>il ramo che <b>scrive</b> non è mai stato eseguito: cambierebbe un'impostazione di sicurezza su una macchina dove la protezione è già accesa. Serve una macchina di prova, non una riga</td>
+          <td class="n"><span class="tag t-wip">in corso</span></td></tr>
+      <tr><td>Il cambio di nome non perde niente</td>
+          <td>provato una volta e riprovato; si chiude al prossimo aggiornamento da una versione col nome vecchio</td>
+          <td class="n"><span class="tag t-wip">in corso</span></td></tr>
+      <tr><td>Prova su un ransomware vero</td>
+          <td>la detonazione vera serve un laboratorio isolato — limite dichiarato in ADR-0014, non una svista. Il simulatore benigno end-to-end c'è</td>
+          <td class="n"><span class="tag t-todo">da fare</span></td></tr>
+    </table>
+    <p class="foot">Tutto il resto che era «da fare» è passato a <b>per scelta</b> con la misura accanto, oppure è dietro una delle tre porte.
+       Le tre righe qui sopra sono le uniche in cui il codice esiste e manca l'esecuzione dove conta.</p>
+  </div>
+
+  <p class="foot">Generato a mano il 16 agosto 2026 · i numeri vengono da <code>CETRAI.php</code>, che è l'inventario vivo.
+     Se questa pagina e quella divergono, ha ragione <code>CETRAI.php</code>.</p>
+
+</div>
+</body>
+</html>

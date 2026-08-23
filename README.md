@@ -1,12 +1,12 @@
-# AIDefender
+# CetrAI
 
-> ## Windows ti protegge dai virus. **AIDefender ti protegge dalle truffe.**
+> ## Windows ti protegge dai virus. **CetrAI ti protegge dalle truffe.**
 
 Il tuo antivirus è bravissimo a fermare i file infetti. Ma nessun file infetto ti ha mai chiesto le
 credenziali della banca: quello lo fa un SMS che sembra di Poste, un link che sembra dell'Agenzia
 delle Entrate, un dominio che sembra il tuo istituto e ha una lettera al posto giusto.
 
-**AIDefender è il pezzo che manca.** Sta accanto a Windows Defender, non al suo posto.
+**CetrAI è il pezzo che manca.** Sta accanto a Windows Defender, non al suo posto.
 
 E non è un'app a cui *chiedere* se un messaggio è una truffa. È quella che **guarda al posto tuo**, e
 quando trova qualcosa la sistema invece di segnalartela.
@@ -15,7 +15,7 @@ quando trova qualcosa la sistema invece di segnalartela.
 
 ## ⬇️ Scarica
 
-**[→ Scarica l'ultima versione dalla sezione Releases](../../releases/latest)**
+**[⬇ Scarica CetrAI](https://github.com/Grokeador/CetrAI/releases/latest/download/CetrAI-Setup-x64.msi)** — oppure guarda la **[pagina del prodotto](https://grokeador.github.io/CetrAI/)**
 
 Windows 10 o successivo, 64 bit, diritti di amministratore. Un solo file, nessuna dipendenza da
 installare prima: il runtime viaggia dentro.
@@ -28,7 +28,7 @@ solo e l'icona compare nell'area di notifica. **Non ti viene chiesto niente.**
 
 ## La regola del prodotto: tu non devi fare niente
 
-Questa è la cosa che rende AIDefender diverso, ed è una scelta scritta nel codice prima ancora che
+Questa è la cosa che rende CetrAI diverso, ed è una scelta scritta nel codice prima ancora che
 nel marketing.
 
 Chi installa un antivirus non vuole diventare un tecnico. Preme un pulsante e il computer deve
@@ -98,7 +98,7 @@ essere la banca, e **sei tu a installare** il programma di controllo remoto. Sof
 firmato, che ogni antivirus lascia passare — giustamente, perché non è un virus. Non c'è niente da
 trovare per uno scanner di file.
 
-AIDefender guarda un'altra cosa: **quando quel programma è arrivato sul computer**. Chi lo usa per
+CetrAI guarda un'altra cosa: **quando quel programma è arrivato sul computer**. Chi lo usa per
 lavoro l'ha installato mesi fa. Chi sta per essere derubato l'ha installato durante la telefonata che
 è ancora in corso. Nei secondi prima che lo sconosciuto entri, ti dice l'unica frase che nessuno ti
 sta dicendo: *nessuna banca chiede di installare questi programmi.*
@@ -137,7 +137,7 @@ prodotto porta solo la metà pubblica. Rifiuta anche una versione più vecchia d
 
 ### 🛡️ Fa da ponte con Windows Defender
 
-Defender conosce il proprio stato ma non lo dice a nessuno. AIDefender glielo chiede e te lo mostra
+Defender conosce il proprio stato ma non lo dice a nessuno. CetrAI glielo chiede e te lo mostra
 in una schermata sola: antivirus, protezione in tempo reale, monitoraggio comportamenti, controllo
 download, protezione cartelle, protezione da manomissione, età delle firme, ultima scansione.
 
@@ -154,7 +154,7 @@ di phishing veri, corpora di messaggi già etichettati da altri.
 | Conversazioni normali (4.827 messaggi veri) accusate per sbaglio | **0** |
 | Phishing riconosciuto dove il catalogo conosce il marchio | **86,4%** |
 | Phishing riconosciuto dove **non** lo conosce | **1,6%** |
-| Test automatici che girano a ogni build | **822** |
+| Test automatici che girano a ogni build | **1.115** |
 | Tempo per verdetto | **0,041 ms** — 17.700 al secondo su un thread |
 | Memoria per verdetto | **4,7 KB** |
 | Memoria del servizio | **18-20 MB** all'avvio |
@@ -181,7 +181,7 @@ già deciso di controllare.
 
 Ma la truffa che ti frega non è quella che hai messo in dubbio. È quella che hai creduto.
 
-| | L'assistente che ti dà un parere | AIDefender |
+| | L'assistente che ti dà un parere | CetrAI |
 |---|---|---|
 | **Devi ricordarti di usarlo** | sì: apri, incolli, aspetti | **no**: guarda da sé cronologia, file e indirizzi |
 | **Cosa ottieni** | un giudizio | **una cosa fatta** — il dominio bloccato, il processo fermato |
@@ -236,12 +236,12 @@ più bisogno è quella che crede di aver comprato un antivirus e quindi smette d
 ## Verifica del file
 
 ```
-AIDefender-0.1.5347-x64.msi
-SHA-256  230B1D56A7087CA858D9ECC09D5D433305003CA3847DDB619D9F04EE62644238
+CetrAI-0.1.5629-x64.msi
+SHA-256  F2E4E37695F50D694AC3623B33E3CC724499D43264ADEB9B1C0ABCD21F15221A
 ```
 
 ```powershell
-Get-FileHash .\AIDefender-0.1.5347-x64.msi -Algorithm SHA256
+Get-FileHash .\CetrAI-0.1.5629-x64.msi -Algorithm SHA256
 ```
 
 La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
