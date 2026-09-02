@@ -1,4 +1,4 @@
-# CetrAI
+# CetrAI è il primo AI Security Agent personale che lavora insieme a Windows Defender.
 
 > ## Windows ti protegge dai virus. **CetrAI ti protegge dalle truffe.**
 
