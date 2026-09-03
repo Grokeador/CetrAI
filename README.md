@@ -102,9 +102,12 @@ contravvenzione, giacenza, dogana*. Compaiono in **zero** domini legittimi su un
   da solo, navigando
 - **Dalle risposte già pagate**: una forma di caso che l'analisi approfondita ha deciso tre volte
   allo stesso modo viene decisa qui, offline, in microsecondi e gratis. Più lo usi, meno costa
-- **Dalle altre installazioni**: due computer nella stessa casa incontravano la stessa campagna due
-  volte e la pagavano due volte. Ora una regola corroborata da più macchine *diverse* vale per
-  tutte — e sul filo passa solo una fascia di punteggio e un elenco di sigle
+- **Dalle altre installazioni** — *costruito, provato, e spento nel pacchetto*: due computer nella
+  stessa casa incontrano la stessa campagna due volte e la pagano due volte. Il giro completo è stato
+  eseguito, client vero contro backend vero: due installazioni concordano su una forma, la terza la
+  riceve e la adotta. Sul filo passerebbe solo una fascia di punteggio e un elenco di sigle. **È
+  spento perché non esiste ancora un indirizzo pubblico a cui parlare**, e la schermata di consenso
+  non viene nemmeno compilata: la domanda si fa quando esiste una risposta
 
 ### 📞 Ti avvisa quando la truffa arriva per telefono
 
@@ -136,10 +139,19 @@ deve vincere la corsa contro l'incolla, e sostituisce in millisecondi. Quello lo
   presa **prima** dell'inizio dell'attacco
 - **Attribuzione del processo e congelamento**: chi sta scrivendo viene individuato e fermato
 
-### 🌐 Ti difende mentre navighi
+Su cosa è stato provato, per non lasciarlo capire a metà: un attacco **inscenato** di 120 file,
+fermato al quinto, con una finestra di rilevamento di due minuti. La prova su un campione di
+ransomware **vero** è ancora da fare, ed è scritta fra le cose da fare nella pagina dello stato.
 
-Estensione per **Chrome, Edge e Firefox**, con un filtro di riservatezza che toglie query e frammenti
-prima ancora che l'indirizzo lasci la pagina: la sessione non esce, mai.
+### 🌐 Ti difende mentre navighi — *l'estensione non è ancora pubblicata*
+
+Estensione per **Chrome, Edge e Firefox**, Manifest V3, con un filtro di riservatezza che toglie
+query e frammenti prima ancora che l'indirizzo lasci la pagina: la sessione non esce, mai.
+
+**Non è ancora negli store**, quindi oggi non puoi installarla: la pubblicazione è fra le cose da
+fare. Le capacità che vivono dentro di lei — fra cui il blocco della finestra a schermo intero
+«chiama questo numero» — arrivano quando arriva lei. Quello che protegge la navigazione **adesso** è
+la lettura della cronologia dei tre browser, che gira nel servizio e non ha bisogno di estensioni.
 
 ### 🔄 Si aggiorna da solo, e in modo verificabile
 
@@ -259,8 +271,12 @@ SHA-256  F2E4E37695F50D694AC3623B33E3CC724499D43264ADEB9B1C0ABCD21F15221A
 Get-FileHash .\CetrAI-0.1.5629-x64.msi -Algorithm SHA256
 ```
 
-La stessa impronta è dentro `aggiornamento.json`, firmata: è quella che il prodotto controlla da sé
-prima di installare qualunque cosa.
+La stessa impronta è dentro `aggiornamento.json` **allegato alla release**, firmato: è quella che il
+prodotto legge da `releases/latest/download/` e controlla da sé prima di installare qualunque cosa.
+
+> ⚠️ Il file `aggiornamento.json` che sta nella **radice di questo repository** è un residuo della
+> versione 0.1.5347, di quando il prodotto si chiamava ancora AIDefender: porta un'altra impronta e
+> non è quello che il prodotto legge. Confronta sempre con l'allegato della release.
 
 ---
 
