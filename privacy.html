@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CetrAI — Privacy e statistiche</title>
+<meta name="description" content="Quali dati raccoglie il sito di CetrAI, perché, per quanto tempo e come si revoca il consenso.">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+<style>
+:root{
+  --bg:#0a0d14; --card:#141b26; --line:#212c3d;
+  --ink:#eaf0f8; --dim:#93a3ba; --dim2:#6b7d96; --acc:#3ddc97;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--acc)}
+h1{font-size:clamp(1.8rem,4vw,2.4rem); letter-spacing:-.02em; margin:0 0 .3em}
+h2{font-size:1.2rem; letter-spacing:-.01em; margin:2.2em 0 .6em}
+p{margin:0 0 1em}
+.nav{border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex; align-items:center; height:62px}
+.logo{font-weight:800; letter-spacing:-.02em; font-size:1.12rem; color:var(--ink); text-decoration:none}
+.logo span{color:var(--acc)}
+main{padding:56px 0 88px}
+.lede{color:var(--dim); font-size:1.08rem}
+table{border-collapse:collapse; width:100%; margin:0 0 1.4em; font-size:.94rem}
+th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+th{color:var(--dim2); font-weight:600; font-size:.82rem; text-transform:uppercase; letter-spacing:.06em}
+code{background:#1a2331; padding:2px 7px; border-radius:5px; color:#bfe8d4; font-size:.9em}
+.box{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:0 0 1.4em}
+footer{border-top:1px solid var(--line); padding:36px 0; color:var(--dim2); font-size:.88rem}
+.cb-revoca{cursor:pointer;background:none;border:0;padding:0;font:inherit;color:inherit;opacity:.75;text-decoration:underline}
+</style>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<div class="nav">
+  <div class="wrap"><a class="logo" href="index.html">Cetr<span>AI</span></a></div>
+</div>
+
+<main>
+<div class="wrap">
+
+<h1>Privacy e statistiche</h1>
+<p class="lede">Questa pagina spiega l'unica raccolta di dati che avviene su questo sito: il
+conteggio delle visite. Riguarda il sito, non il programma CetrAI installato sul tuo computer.</p>
+
+<h2>Cosa raccogliamo</h2>
+<p>Usiamo <strong>Google Analytics 4</strong> per sapere quante persone visitano la pagina e
+quante scaricano il programma. Serve a capire se la pagina si spiega o no. Non c'è pubblicità,
+non c'è profilazione, non rivendiamo niente a nessuno.</p>
+
+<table>
+  <tr><th>Dato</th><th>A cosa serve</th></tr>
+  <tr><td>Pagine viste e ordine di visita</td><td>Capire quale parte della pagina viene letta</td></tr>
+  <tr><td>Clic sui pulsanti "Scarica"</td><td>Sapere quale punto della pagina convince</td></tr>
+  <tr><td>Sito di provenienza</td><td>Sapere da dove arrivano le persone</td></tr>
+  <tr><td>Paese, città approssimativa</td><td>Sapere se il pubblico è italiano</td></tr>
+  <tr><td>Tipo di dispositivo, browser, lingua</td><td>Sapere su cosa va provata la pagina</td></tr>
+  <tr><td>Indirizzo IP</td><td>Usato per ricavare il paese e poi scartato: Google Analytics 4 non lo conserva</td></tr>
+</table>
+
+<p>Non raccogliamo nome, email, telefono o qualunque altro dato che ti identifichi: sulla pagina
+non c'è nessun modulo da compilare. Il download non richiede registrazione.</p>
+
+<h2>Il consenso, e come toglierlo</h2>
+<p>I cookie di statistica si attivano <strong>solo se premi "Accetta"</strong>. Fino a quel momento,
+e per sempre se premi "Rifiuta", il conteggio resta anonimo e senza cookie: Google riceve un
+segnale che non ti riconosce e non ti segue tra una visita e l'altra.</p>
+
+<div class="box">
+  <p style="margin:0">Hai cambiato idea? <button type="button" class="cb-revoca" id="riapri">Riapri
+  la scelta sui cookie</button> — vale in entrambe le direzioni, e trovi lo stesso collegamento
+  in fondo a ogni pagina.</p>
+</div>
+
+<p>Se rifiuti dopo aver accettato, i cookie già scritti vengono cancellati dal browser.</p>
+
+<h2>I cookie usati</h2>
+<table>
+  <tr><th>Nome</th><th>Chi lo scrive</th><th>Durata</th><th>A cosa serve</th></tr>
+  <tr><td><code>_ga</code></td><td>Google Analytics</td><td>2 anni</td><td>Distinguere un visitatore da un altro</td></tr>
+  <tr><td><code>_ga_JZZBCT8QJM</code></td><td>Google Analytics</td><td>2 anni</td><td>Tenere insieme le pagine di una stessa visita</td></tr>
+  <tr><td><code>cetrai-consenso</code></td><td>Questo sito</td><td>finché non lo cancelli</td><td>Ricordare la tua scelta. Non è un cookie: sta nel browser e non viene mai spedito</td></tr>
+</table>
+
+<h2>Chi vede questi dati</h2>
+<p>I dati vanno a <strong>Google Ireland Limited</strong>, che li tratta come responsabile per
+nostro conto e può trasferirli anche fuori dall'Unione Europea secondo le proprie garanzie
+contrattuali. Nessun altro soggetto riceve questi dati.</p>
+<p>La pagina è ospitata su <strong>GitHub Pages</strong>, che come ogni server web registra le
+richieste ricevute nei propri log tecnici, indipendentemente dal tuo consenso e dal conteggio
+descritto qui.</p>
+
+<h2>Per quanto tempo</h2>
+<p>I dati di navigazione restano in Google Analytics per il periodo impostato sulla proprietà e
+poi vengono cancellati automaticamente. I rapporti aggregati — numeri complessivi, senza
+riferimento a singoli visitatori — restano disponibili anche dopo.</p>
+
+<h2>Base giuridica e diritti</h2>
+<p>Il trattamento si basa sul <strong>tuo consenso</strong> (art. 6.1.a GDPR), che puoi revocare
+in qualsiasi momento con il collegamento qui sopra, senza che questo tolga validità a quanto
+raccolto prima.</p>
+<p>Hai diritto di chiedere accesso, rettifica, cancellazione, limitazione e portabilità dei dati
+che ti riguardano, e di proporre reclamo al <a href="https://www.garanteprivacy.it/">Garante per
+la protezione dei dati personali</a>. Dato che non raccogliamo dati identificativi, per dare
+seguito a una richiesta potremmo non essere in grado di collegare i dati statistici alla tua
+persona.</p>
+
+<h2>Titolare del trattamento</h2>
+<!-- DA COMPLETARE: qui va la denominazione legale (persona fisica o societa') e un indirizzo
+     email di contatto. Senza questi due dati l'informativa resta formalmente incompleta. -->
+<p>Il responsabile del progetto CetrAI. Per qualunque richiesta relativa ai dati si può scrivere
+tramite <a href="https://github.com/Grokeador/CetrAI/issues">le segnalazioni del progetto su
+GitHub</a>.</p>
+
+<p style="color:var(--dim2);font-size:.88rem;margin-top:2.5em">Ultimo aggiornamento: 3 settembre 2026.</p>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">Torna alla pagina principale</a>
+  </div>
+</footer>
+
+<script>
+// La logica della revoca sta tutta in analytics.js: qui c'e' solo l'aggancio, cosi' il
+// collegamento dentro il testo e quello in fondo alla pagina non possono divergere.
+document.getElementById('riapri').addEventListener('click', function () {
+  if (window.cetraiConsenso) { window.cetraiConsenso.riapri(); }
+});
+</script>
+
+</body>
+</html>
