@@ -1,3 +1,18 @@
+<div align="center">
+
+<img src="CetrAI.png" alt="CetrAI — Soluzioni AI intelligenti" width="440">
+
+[![Versione](https://img.shields.io/github/v/release/Grokeador/CetrAI?label=versione&color=3ddc97)](https://github.com/Grokeador/CetrAI/releases/latest)
+[![Download](https://img.shields.io/github/downloads/Grokeador/CetrAI/total?label=download&color=3ddc97)](https://github.com/Grokeador/CetrAI/releases)
+![Windows](https://img.shields.io/badge/Windows-10%20e%2011-3ddc97)
+![Gratis](https://img.shields.io/badge/prezzo-gratis-3ddc97)
+
+### [⬇ Scarica l'installer](https://github.com/Grokeador/CetrAI/releases/latest/download/CetrAI-Setup-x64.msi) · [🌐 Pagina del prodotto](https://grokeador.github.io/CetrAI/) · [📊 Cosa funziona davvero](https://grokeador.github.io/CetrAI/stato.html)
+
+</div>
+
+---
+
 # CetrAI è il primo AI Security Agent personale che lavora insieme a Windows Defender.
 
 > ## Windows ti protegge dai virus. **CetrAI ti protegge dalle truffe.**

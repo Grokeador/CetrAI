@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Nessun <lastmod>: senza un passaggio di build resterebbe fermo alla data in cui e' stato
+     scritto, e una data ferma dice al motore di ricerca una cosa falsa sulla pagina.
+     Da segnalare a mano in Google Search Console: robots.txt qui non servirebbe, perche' i
+     crawler lo leggono solo dalla radice del dominio, che non e' di questo repository. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://grokeador.github.io/CetrAI/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://grokeador.github.io/CetrAI/stato.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://grokeador.github.io/CetrAI/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+</urlset>

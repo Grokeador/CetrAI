@@ -19,6 +19,33 @@
 <meta property="og:image:height" content="768">
 <meta property="og:image:alt" content="Logo CetrAI: scudo verde con la scritta CetrAI e il sottotitolo «Soluzioni AI intelligenti»">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://grokeador.github.io/CetrAI/">
+<!-- Dati strutturati: dicono al motore di ricerca che questa non e' una pagina qualunque ma una
+     scheda di programma. Non portano visite da soli; servono a far apparire prezzo, sistema
+     operativo e categoria nel risultato, quando le visite ci saranno. Ogni valore qui deve
+     corrispondere a quello che c'e' scritto nella pagina: un dato gonfiato qui e' una penalita'. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CetrAI",
+  "applicationCategory": "SecurityApplication",
+  "applicationSubCategory": "Protezione anti-truffa",
+  "operatingSystem": "Windows 10, Windows 11",
+  "processorRequirements": "x64",
+  "url": "https://grokeador.github.io/CetrAI/",
+  "downloadUrl": "https://github.com/Grokeador/CetrAI/releases/latest/download/CetrAI-Setup-x64.msi",
+  "softwareHelp": "https://grokeador.github.io/CetrAI/stato.html",
+  "inLanguage": "it",
+  "image": "https://grokeador.github.io/CetrAI/CetrAI.png",
+  "description": "Protezione anti-truffa per Windows, costruita per l'Italia. Riconosce SMS, email e siti che imitano banche e Pubblica Amministrazione, avvisa sul controllo remoto durante le finte telefonate della banca, ferma il ransomware e ridà i file.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 116'><path d='M50 5 L88 17 V58 C88 84 69 104 50 112 C31 104 12 84 12 58 V17 Z' fill='%230a0d14' stroke='%233ddc97' stroke-width='7' stroke-linejoin='round'/><circle cx='50' cy='40' r='15' fill='%233ddc97'/><path d='M50 66 L62 78 L50 90 L38 78 Z' fill='none' stroke='%233ddc97' stroke-width='5'/></svg>">
 <style>
 :root{
@@ -209,6 +236,19 @@ details.piega .corpo p:last-child{margin-bottom:0}
 .tbl td:nth-child(2){color:var(--dim2)}
 .tbl td:last-child{color:var(--ink); font-weight:600}
 .scroll{overflow-x:auto}
+
+/* ---------- risposta a Microsoft ---------- */
+.microsoft{margin-top:30px; background:var(--card); border:1px solid var(--line); border-radius:13px; padding:24px}
+.microsoft h3{margin-bottom:.5em}
+.microsoft p{color:var(--dim); font-size:.95rem; max-width:74ch}
+.microsoft ul{list-style:none; padding:0; margin:16px 0; display:grid; gap:10px}
+.microsoft li{
+  padding:13px 16px 13px 40px; position:relative; color:var(--dim);
+  background:var(--bg2); border:1px solid var(--line); border-radius:10px; font-size:.93rem;
+}
+.microsoft li::before{content:"→"; position:absolute; left:16px; color:var(--acc); font-weight:700}
+.microsoft li b{color:var(--ink)}
+.microsoft .chiusa{margin-bottom:0; color:var(--ink)}
 
 /* ---------- onestà ---------- */
 .limits ul{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
@@ -592,6 +632,29 @@ footer .sp{margin-left:auto}
           <tr><td>Cosa sa di te</td><td>quello che gli mandi</td><td>le tue abitudini, e restano sul tuo disco</td></tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="microsoft">
+      <h3>«E il filtro anti-truffe di Windows, allora?»</h3>
+      <p>È la prima domanda che fa chiunque, e merita una risposta precisa invece di essere evitata.
+      Microsoft ha aggiunto difese vere, e questo è quello che coprono davvero:</p>
+      <ul>
+        <li><b>Il blocco delle pagine-trappola vive dentro Edge.</b> Riconosce sul dispositivo i finti
+        allarmi a schermo intero — «il tuo computer è infetto, chiama questo numero» — e li ferma. Lo
+        fa bene. Ma è una funzione di Edge: se navighi con Chrome o Firefox, lì non c'è.</li>
+        <li><b>SmartScreen ferma i siti già segnalati.</b> È un elenco: protegge dal phishing che
+        qualcuno ha già trovato e denunciato, non da quello aperto stamattina.</li>
+        <li><b>La protezione phishing di Windows sorveglia la password di Windows.</b> Ti avvisa se la
+        digiti su un sito di phishing o la salvi in un file di testo. Le credenziali della tua banca,
+        scritte in un modulo del browser, sono un'altra cosa.</li>
+        <li><b>Tutto questo succede nel browser.</b> La telefonata che ti fa installare il programma di
+        controllo remoto, l'IBAN sostituito negli appunti un istante prima che tu incolli, i file da
+        recuperare dopo che qualcuno li ha cifrati, il permesso di notifica lasciato aperto mesi fa:
+        succedono fuori dal browser.</li>
+      </ul>
+      <p class="chiusa">Non è una gara a chi è più forte: Microsoft copre bene il suo pezzo, e CetrAI
+      gli sta accanto senza sostituirlo — esattamente come fa con Defender. Il punto è che il pezzo
+      accanto, oggi, non lo copre nessuno.</p>
     </div>
 
     <div id="limiti" class="limits">
